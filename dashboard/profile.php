@@ -1,9 +1,7 @@
 <?php session_start();
 
 require('../engine/config.php');
-
 if(isset($_SESSION['sp_email'])){
-
      $sp_email = $_SESSION['sp_email'];
      $get_user = mysqli_query($conn, "SELECT * FROM service_providers WHERE sp_email = '". $sp_email."' and sp_verified = 1");
      if($get_user->num_rows>0){ 
@@ -24,11 +22,8 @@ if(isset($_SESSION['sp_email'])){
       }
 
     }
-
-
     
 elseif(isset($_SESSION['email'])){
-
     $email = $_SESSION['email'];
     $get_user = mysqli_query($conn, "SELECT * FROM user_profile WHERE user_email = '". $email."' and verified = 1");
     if($get_user->num_rows>0){ 
@@ -76,16 +71,9 @@ elseif(isset($_SESSION['email'])){
           <i id="fa-bars" class='fa fa-bars fa-1x '></i>
 </span>
      <div class='side-bar'>
-        
-
+     
       <?php include 'components/sidenav.php'; ?>
-
-
-
          <!-- main part -->
-
-
-
          <div class='main-part'>
 
                
@@ -100,7 +88,7 @@ elseif(isset($_SESSION['email'])){
                        <span class='bg-light text-dark'><i class='fa fa-search'></i></span>
                        <span class='bg-light text-dark'><i class='fa fa-bell'></i></span>
                          <div class='bg-light rounded rounded-pill d-flex g-5 px-3 '>
-                             <img src="../assets/img/profile.jpg" class='rounded rounded-circle' alt="">
+                             <img src="<?php echo$user_img; ?>" class='rounded rounded-circle' alt="">
                              
                                      <a class='d-flex align-items-center text-dark text-decoration-none'><i class='fa fa-caret-down'></i></a>                      
                          </div>
@@ -243,26 +231,26 @@ elseif(isset($_SESSION['email'])){
 <script>
 
 function openCity(evt, cityName) {
-var i, tabcontent, tablinks;
-tabcontent = document.getElementsByClassName("tabcontent");
-for (i = 0; i < tabcontent.length; i++) {
-tabcontent[i].style.display = "none";
- }
-tablinks = document.getElementsByClassName("tablinks");
-for (i = 0; i < tablinks.length; i++) {
- tablinks[i].className = tablinks[i].className.replace(" active", "");
- }
-document.getElementById(cityName).style.display = "block";
-evt.currentTarget.className += " active";
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+      }
+            tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+           tablinks[i].className = tablinks[i].className.replace(" active", "");
+       }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
 }
-document.getElementById("defaultOpen").click();
+   document.getElementById("defaultOpen").click();
 </script>
 
  <script>
 
 $('#lg').html("<select  id='lga' class=' lga address_details'><option>Business Axis</option></select>");
 $('.location').on('change',function() {
-var location = $(this).val();
+      var location = $(this).val();
 
       $.ajax({
              type:"POST",
@@ -281,13 +269,13 @@ var location = $(this).val();
 
   $('#btn-submit').on('click',function(){
       
-       $(".loading-image").show();
+      $(".loading-image").show();
 
       $.ajax({
 
             type: "POST",
 
-            url: "edit-page.php",
+            url: "../engine/edit-page.php",
 
             data:  $("#editpage-details").serialize(),
 
@@ -302,11 +290,11 @@ var location = $(this).val();
             
             swal({
               
-              text:"Details update is saved",
+                     text:"Details update is saved",
 
-              icon:"success",
+                     icon:"success",
 
-            });
+                });
            $("#editpage-details")[0].reset();
            
             $(".loading-image").hide();
@@ -338,6 +326,65 @@ var location = $(this).val();
     });
 
 </script>
+
+
+<script type="text/javascript">
+
+$('#editpage-form').on('submit',function(e){
+
+if (confirm("Are you sure to change this?")) {
+
+ e.preventDefault();
+
+$(".loading-image").show();
+
+var formdata = new FormData();
+
+   $.ajax({
+           type: "POST",
+
+           url: "../engine/changeprofilepic.php",
+
+           data:new FormData(this),
+
+           cache:false,
+
+           processData:false,
+
+           contentType:false,
+
+           success: function(response) {
+
+           $(".loading-image").hide();
+
+          if(response==1){
+
+            swal({
+
+          text:"Image has been changed",
+          icon:"success",
+        });
+       $('#bom').load(location.href + " #my");
+}
+
+else
+ { 
+  swal({
+            icon:"error",
+            text:response
+
+           });
+            $("#editpage-form")[0].reset();      
+
+            }
+ }
+        });
+ }
+    });
+
+</script>
+
+
 
 </body>
 </html>
