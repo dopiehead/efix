@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <div class='hero-section'>
 
      <div class='hero-content mt-2 text-center'>
@@ -12,12 +18,17 @@
 
            <br><br><br><br>
 
-           <div class='px-3 mt-5 py-2 '>
-            
-           <input type="text" class='rounded rounded-pill border-0 ' >
-        
 
-           <button class='btn btn-primary btn-search text-white rounded rounded-pill fs-4 mr-2'><i class='fa fa-search'></i>Search</button>
+           <div class='px-3 mt-5 py-2 '>
+
+           <form method='POST' action='./search-process.php'>
+            
+           <input type="text" name="search" class='rounded rounded-pill border-0 ' >
+        
+  
+           <button name ='submit' class='btn btn-primary btn-search text-white rounded rounded-pill fs-4 mr-2'><i class='fa fa-search'></i>Search</button>
+            
+           </form>
 
            </div>
      </div>

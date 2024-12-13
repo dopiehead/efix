@@ -1,3 +1,59 @@
+<?php session_start();
+
+require('../engine/config.php');
+
+if(isset($_SESSION['sp_email'])){
+
+     $sp_email = $_SESSION['sp_email'];
+     $get_user = mysqli_query($conn, "SELECT * FROM service_providers WHERE sp_email = '". $sp_email."' and sp_verified = 1");
+     if($get_user->num_rows>0){ 
+         while($row = mysqli_fetch_array($get_user)){
+              $user_id = $row["sp_id"];
+              $user_name = $row["sp_name"];
+              $user_email = $row["sp_email"];
+              $user_img = $row["sp_img"];
+              $user_phone = $row["sp_phonenumber1"];
+              $user_phone1 = $row["sp_phonenumber2"];
+              $user_location = $row["sp_location"];
+              $user_experience = $row["sp_experience"];
+              $user_bio = $row["sp_bio"];
+
+          }
+
+      }
+
+    }
+
+
+    
+elseif(isset($_SESSION['email'])){
+
+    $email = $_SESSION['email'];
+    $get_user = mysqli_query($conn, "SELECT * FROM user_profile WHERE user_email = '". $email."' and verified = 1");
+    if($get_user->num_rows>0){ 
+        while($row = mysqli_fetch_array($get_user)){
+             $user_id = $row["id"];
+             $user_name = $row["user_name"];
+             $user_email = $row["user_email"];
+             $user_img = $row["user_image"];
+             $user_phone = $row["user_phone"];            
+             $user_location = $row["user_location"];
+        
+
+         }
+
+     }
+
+   }
+
+
+   else{
+    header("location:../login.php");
+    exit(); 
+   }
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,7 +107,7 @@
 $you = null;
 require 'engine/config.php';
 $limit = 2;  
-$getQuery = "select * from messages where receiver_email = '$you' and is_receiver_deleted = 0 group by sender_email";    
+$getQuery = "select * from messages where receiver_email = '$user_email' and is_receiver_deleted = 0 group by sender_email";    
 $result = mysqli_query($config, $getQuery);  
 $total_rows = $result->num_rows;    
 $total_pages = ceil ($total_rows / $limit);    
@@ -63,7 +119,7 @@ $page_number = $_GET['page'];
 $initial_page = ($page_number-1) * $limit;
 $time = time();
 $inbox="select *  from (
-select * from messages where receiver_email = '$you' and is_receiver_deleted = 0 and has_read = 0 order by has_read asc limit 18446744073709551615) as sub group by sender_email limit $initial_page,$limit";
+select * from messages where receiver_email = '$user_email' and is_receiver_deleted = 0 and has_read = 0 order by has_read asc limit 18446744073709551615) as sub group by sender_email limit $initial_page,$limit";
 $in =mysqli_query($config, $inbox);
 $datafound=$in->num_rows;
 ?>
@@ -80,7 +136,7 @@ $datafound=$in->num_rows;
 <?php
 require 'engine/config.php';
 $limit = 2;  
-$getQuery = "select * from messages where receiver_email = '$you' and is_receiver_deleted = 0 group by sender_email";    
+$getQuery = "select * from messages where receiver_email = '$user_email' and is_receiver_deleted = 0 group by sender_email";    
 $result = mysqli_query($config, $getQuery);  
 $total_rows = $result->num_rows;    
 $total_pages = ceil ($total_rows / $limit);    
@@ -92,7 +148,7 @@ $page_number = $_GET['page'];
 $initial_page = ($page_number-1) * $limit;
 $time = time();
 $inbox="select *  from (
-select * from messages where receiver_email = '$you' and is_receiver_deleted = 0 order by has_read asc limit 18446744073709551615) as sub group by sender_email limit $initial_page,$limit";
+select * from messages where receiver_email = '$user_email' and is_receiver_deleted = 0 order by has_read asc limit 18446744073709551615) as sub group by sender_email limit $initial_page,$limit";
 $in =mysqli_query($config, $inbox);
 $datafound=$in->num_rows;
 echo"<table class='table-responsive'><th><tr style='background-color:rgba(192,192,192,0.1);'>
@@ -175,12 +231,6 @@ print_r($next);
 
  </div>
 
-
-        
-         
-
-
-
 <script>
 $(document).ready(function(){
 $('.remove').click(function(){
@@ -213,8 +263,6 @@ swal({icon:"error",
  
 });
 </script>
-
-
 
 
 <script>

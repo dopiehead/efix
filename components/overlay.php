@@ -12,10 +12,7 @@
 
 </div>
 
-
-
-
-<div class='d-flex section_links text-white fw-bold '>
+ <div class='d-flex section_links text-white fw-bold '>
 
       <div class='nav-bar'>
 
@@ -53,14 +50,11 @@
          </div>
 
 
-    
-
-
          <div class='d-flex section-profile g-4 list-unstyled'>
 
          <li class='text-white'><a class='text-decoration-none text-white' href='login.php?details=profile.php'><i class='fa fa-user-alt'></i></a></li>
 
-         <li class='text-white'><a class='text-decoration-none text-white' href='cart.php'><i class='fa fa-shopping-cart'></i></a></li>
+         <!-- <li class='text-white'><a class='text-decoration-none text-white' href='cart.php'><i class='fa fa-shopping-cart'></i></a></li> -->
 
 
          </div>
@@ -68,9 +62,6 @@
 
 
 </div>
-
-
-
 
 <div id="myform" class="overlay overlayParent">
 

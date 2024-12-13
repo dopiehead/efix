@@ -40,7 +40,7 @@
              
              <a href='dashboard/profile.php' class='text-dark'><i class='fa fa-user-alt'></i></a>
 
-             <a href='cart.php' class='text-dark'><i class='fa fa-shopping-cart'></i></a>
+             <!-- <a href='cart.php' class='text-dark'><i class='fa fa-shopping-cart'></i></a> -->
 
 
          </div>

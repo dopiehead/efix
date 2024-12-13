@@ -77,7 +77,7 @@ $details = $_GET['details'];
      <?php include 'components/footer.php';?>
  </div>
 
-<input type="hidden" id='details'  value='<?php echo$details;?>'>
+<input type="hidden" id='details'  value='<?php if(!empty($details)){ echo$details;} ?>'>
 
 <script>
      $(".btn-login").on("click", function(e){
