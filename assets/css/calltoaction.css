@@ -1,0 +1,89 @@
+.sectionB{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+
+@media screen and (max-width: 768px) {
+
+.sectionB {
+flex-direction:column;
+gap:15px;
+
+}
+
+}
+
+
+.clicktoadd{
+    height:auto;
+    max-width:280px;
+}
+
+@media screen and (max-width:768px) {
+
+.clicktoadd{
+width:200px;
+height:auto;
+
+
+}
+}
+
+
+.subA{
+
+    display:flex;
+    justify-content:space-evenly;
+    position: relative;
+   
+}
+
+
+.subA .bg-primary{
+    height:100%;
+    width:200px;
+    position: absolute;
+    border-radius:0px 80px 80px 0px;
+    left:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column !important;
+    flex-wrap:wrap;
+    gap:50px;
+}
+
+
+
+
+.subA .bg-primary div{
+gap:20px;
+}
+
+
+
+
+.subA h6{
+    font-size:16px;
+    margin:0;
+    text-align:center;
+    color:white;
+}
+
+.woman,.man{
+    height:auto;
+    width:100%;
+}
+
+.subAdd{
+
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+    margin-top:10px;
+    flex-direction: column;
+    font-weight: bold;
+}

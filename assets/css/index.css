@@ -1,0 +1,293 @@
+.provider-list{
+      margin-right:20px;
+}
+
+.provider_img{
+      width:150px;
+      height:150px; 
+      border-radius:50%;
+      object-fit: cover;
+}
+
+.fw-bold{
+     font-weight:bold;
+}
+
+
+.package-container{
+
+display: flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap: wrap;
+
+
+}
+
+
+
+/* product table */
+.package {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      width:250px;
+      gap:8px;
+}
+
+
+@media  screen and (max-width: 768px){
+  
+      .package {
+           
+            width:10.2rem;
+      }
+           
+
+
+}
+
+
+#priceitem{
+
+      font-family:Poppins;
+      font-weight: bold;
+      color:black;
+       opacity: 0.8;
+       text-transform:capitalize;
+     font-size:13px;
+     padding:5px;
+     position: relative;
+     margin-bottom: 8px;
+    
+    
+    }
+    
+    
+    
+    #locitem{
+         font-size:12px;
+          font-family:poppins;
+         color: rgba(0,0,0,0.9);
+         padding:10px;
+         width:100%;
+    
+         font-weight: bold;
+          text-transform: capitalize;
+    
+    
+    }
+
+
+    
+    #imgitem{
+    height: 150px;
+    width:100%;
+    
+    }
+    
+    
+    
+    #nameitem a{
+      font-size:12px;
+      font-weight:normal;
+      padding-left:10px;
+      text-transform:capitalize;
+      color: rgba(0,0,0,0.4);
+      padding-top: 8px;
+    
+     word-wrap:break-word;
+     text-align:center;
+      font-family:poppins;  
+    }
+
+
+    .g-5{
+      gap:10px;
+    }
+
+
+    .charges-banner{
+
+display:flex;
+justify-content:center;
+width:100%;
+margin:25px 0px;
+    }
+
+
+    .charges-banner .bgB{
+    
+      background-color:#ffffff;
+
+      height:auto;
+      width:400px;
+      position: relative;
+
+    }
+
+
+    @media screen and (max-width:768px) {
+      
+      .charges-banner .bgB{
+    
+            width:200px;
+         
+      
+          }
+
+
+    }
+
+
+    .charges-banner .bgB .A{
+    
+      background-color: #ffffff;
+      left:70px;
+      height:100%;
+      width:100%;      
+      position:absolute;
+      border-radius:0px 80px 80px 0px;
+      z-index: 2;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction: column;
+     
+
+    }
+
+
+    
+    @media screen and (max-width:768px) {
+      
+     
+    .charges-banner .bgB .A{
+      background-color: white;
+   
+      left:12px;
+    
+      width:250px;      
+    
+      z-index: 2;
+    
+     
+
+    }
+
+
+
+    }
+
+.charges-banner img{
+height:auto;
+max-width:400px;
+}
+
+
+.states{
+background-image:radial-gradient(rgba(8, 8, 8, 0.663),rgba(102, 102, 102, 0.9)),url("../../assets/img/abuja.JPG");
+height:200px;
+width:230px;
+color:white;
+display: flex !important;
+justify-content: center;
+align-items: center;
+margin-right:20px;
+
+}
+
+
+
+.heading{
+justify-content: space-between;
+align-items: center;
+}
+
+
+
+.services{
+display:flex;
+justify-content:space-around;
+align-items:start;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+
+
+@media screen and (max-width: 768px){
+ 
+      .services{
+            justify-content:space-evenly;
+            align-items:start; 
+            gap:8px;
+          
+            
+            }
+
+}
+
+
+
+
+.services div{
+
+      width: 250px;
+      height:150px;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      flex-direction: column;
+      border:1px solid rgb(44, 118, 171);
+      border-radius:15px;
+}
+
+
+@media screen and (max-width: 768px){
+ 
+      .services div{
+
+            width: 9.8rem;
+            height:150px;
+            gap:8px;
+          
+      }     
+
+}
+
+
+
+
+.services div img{
+width:50%;
+height:100px;
+object-fit: cover;
+}
+   
+
+
+@media screen and (max-width: 768px){
+ 
+      .services div img{
+
+            width:80%;
+            height:80px;
+          
+      }     
+
+}
+
+
+
+
+
+
+
+.services div span{
+  font-size:13px;
+      }
+        

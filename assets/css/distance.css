@@ -1,0 +1,27 @@
+.bg-distance{
+    display:flex;
+    justify-content: space-between;
+}
+
+.profile{
+    display: flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.profile div {
+    height:80px;
+    width: 80px;
+    border-radius:50%;
+}
+
+
+.profile div h5{
+   width:200px;
+}
+
+.profile div img{
+    height:100%;
+    width: 100%;
+    border-radius: 50%;
+}

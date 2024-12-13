@@ -1,0 +1,124 @@
+
+.services{
+    display:flex;
+    justify-content:space-around;
+    align-items:start;
+    gap:20px;
+    flex-wrap:wrap;
+    
+    }
+    
+    
+    
+    @media screen and (max-width: 768px){
+     
+          .services{
+    
+                gap:10px;
+              
+                
+                }
+    
+    }
+    
+    
+    
+    
+    .services div{
+    
+          width: 250px;
+          height:150px;
+          display: flex;
+          justify-content:center;
+          align-items: center;
+          flex-direction: column;
+          border:1px solid rgb(44, 118, 171);
+          border-radius:15px;
+    }
+    
+    
+    @media screen and (max-width: 768px){
+     
+          .services div{
+    
+                width: 180px;
+                height:150px;
+                gap:10px;
+              
+          }     
+    
+    }
+    
+    
+    
+    
+    .services div img{
+    width:50%;
+    height:100px;
+    object-fit: cover;
+    }
+       
+    
+    
+    @media screen and (max-width: 768px){
+     
+          .services div img{
+    
+                width:80%;
+                height:80px;
+              
+          }     
+    
+    }
+    
+    
+    .services div span a{
+      font-size:13px;
+          }
+
+.bg-grey{
+    background-color: #efefef;
+    padding:10px;
+}
+          
+
+.popup{  
+    position:fixed;
+    padding: 4px 8px !important;
+    bottom:-100%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 350px;
+    padding:5px;
+    z-index: 99;
+    box-shadow: 0 5px 30px rgba(0,0,0,.30);
+    background: #fff;
+    opacity:0;
+    transition: 0.3s;
+    text-align: center;
+    font-size: 14px !important;
+    font-family: poppins !important;
+    
+    }
+
+    .close_heading{
+        justify-content:space-between;
+         align-items:center;
+          gap:5px;
+          margin:10px 0px;
+    }
+
+    input[type=checkbox]{
+        margin-right: 5px;
+    }
+
+    #btn_service{
+        cursor: pointer;
+    }
+
+
+    #close-popup{
+        cursor: pointer;
+       
+    }
+

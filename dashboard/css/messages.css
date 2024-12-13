@@ -1,0 +1,242 @@
+.message{
+    border-right:3px solid white; 
+    position: relative;
+  }
+
+td a{
+
+    font-size: 0.7rem !important;
+  }
+  #refresh, .mark, #trash {
+  
+  border:2px solid skyblue;
+  
+  padding: 4px 10px;
+  
+  margin: 0px 5px;
+  
+    color: skyblue !important;
+  
+    cursor: pointer;
+  
+  
+  }
+  
+  
+  @media only screen and (max-width:767px){
+  
+  
+   .mark{
+  
+  border:2px solid skyblue;
+  
+  padding: 4px 10px;
+  
+  margin: 0px 5px;
+  
+    color: skyblue !important;
+  
+    cursor: pointer;
+  
+    font-size: 0.5rem !important;
+  
+  
+  }
+  
+  }
+  
+  
+  
+  #inbox{
+  
+     width: 70%
+  }
+  
+  @media only screen and (max-width:767px){
+  
+   #inbox{
+  
+     width:45%
+  }
+  
+  
+  }
+  
+  
+  #sender, #subject, #td_date{
+  
+  opacity: 0.7;
+  
+  }
+  
+  
+  #subject{
+  
+    width: 60%;
+  }
+  
+  
+  #td-action{
+  
+  width: 80px; text-align: center;
+  }
+  
+  
+  
+  #td-from{
+  width: 250px; text-align: center;
+  }
+  
+  
+  
+  #td-subject{
+   width: 450px; text-align: center;
+  
+  }
+  
+  
+  #td-date{
+  
+  width: 220px; text-align: center;
+  
+  
+  }
+  
+
+  
+  #messages_home .btn-primary, #messages_home .btn-trash{
+  
+  font-size:0.8rem;
+  
+  }
+  
+  
+  
+  
+  #messages_home .btn-primary{
+  
+  border-right: 2px solid black;
+  
+  }
+  
+  
+  
+  #messages_home .btn-trash{
+  
+  background-color: inherit;
+  
+  border-right: 2px solid black;
+  
+  color:black!;
+  
+  }
+  
+  
+  
+  #date{
+  
+  float: right;margin-right: 13px;
+  }
+
+  
+  #active{
+  
+    background-color:white;
+  
+    width: 100%;
+  
+  }
+  
+  
+  
+  @media only screen and (max-width:767px){
+  
+ 
+  
+  #date{
+  
+  float:right;
+  margin-right: 31px;
+  font-size: 12px;
+  }
+  
+  
+  #battery{
+  
+    font-size: 11px;
+  }
+  
+  }
+  
+  
+  div p{
+  
+  
+    font-size: 12px;
+  
+    width: 100%;
+  
+    padding: 15px 30px;
+  
+    margin-top: 25px;
+  
+    border:1px solid rgba(225,225,285,0.8);
+  
+    background-color: rgba(225,225,285,0.8);
+  }
+  
+
+  .col-md-6{
+  
+  
+    margin-top: 10px;
+  
+  }
+  
+  
+  
+  .col-md-6 h6{
+  
+    font-weight: bold;
+  
+    font-size: 15px;
+  }
+  
+  
+  .col-md-9 h6{
+  
+    font-weight: bold;
+  }
+  
+  
+  #label{
+  
+    font-size: 13px;
+  
+    background-color:rgba(240,240,240,0.9);
+  
+    padding: 20px 23px;
+  
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  
+  
+  #product input{
+  
+    width: 100%;
+  
+  }
+
+  
+
+  
+  
+  .button_dashboard{
+  
+    margin-top: 10px;
+  }
+
+  
+  

@@ -1,0 +1,124 @@
+.hero-section{
+    background-image:linear-gradient(to right top,rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url("../img/image.jpg");
+    background-position: center;
+    background-size: cover;
+    height:70vh;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: -95px;
+    
+}
+
+@media screen  and (max-width: 1200px){
+    .hero-section{
+     
+        margin-top: -98px;
+        height:55vh;
+        
+    }  
+}
+
+
+
+
+
+
+
+.hero-content{
+
+    font-weight: bold;
+    margin-top:150px;
+    color:white;
+
+   
+   
+}
+
+
+
+@media screen and (max-width:768px) {
+  
+    
+     .hero-content{
+
+           font-weight: bold;
+           margin-top:100px;
+           color:white;
+
+   
+   
+     }
+
+}
+
+
+
+
+
+
+.hero-content h2{
+
+    font-weight: bolder;
+    margin-top:150px;
+    color:rgb(255, 217, 128);
+    text-transform: uppercase;
+    transform:translate(-50%, -50%);
+    left: 50%;
+    width: 100%;
+   
+}
+
+.hero-section input{
+    height:55px;
+    width:480px;
+  
+}
+
+@media screen and (max-width:768px) {
+  
+    .hero-section input{
+        height:55px;
+        width:320px;
+      
+    }  
+
+}
+
+
+
+.hero-section input:focus{
+ outline:none;
+ border:none;
+  
+}
+
+
+.btn-search{
+
+    float: right;
+
+    margin-top:9px;
+    margin-left:-120px;
+    position: relative;
+
+    z-index:1;
+
+  
+}
+
+
+.animated-heading {
+    margin-top: 100px; /* Initial margin */
+    opacity: 0; /* Initial opacity */
+    transition: margin-top 0.5s ease; 
+    position: absolute;/* Animate only the margin */
+}
+
+.animated-heading.animate {
+    margin-top:90px;
+    opacity: 1; /* Final margin after animation */
+}
+
+
+

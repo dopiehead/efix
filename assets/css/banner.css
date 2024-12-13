@@ -1,0 +1,16 @@
+.banner-container{
+background-image:linear-gradient(to right top,rgb(27, 77, 150),rgba(255,255,255,0.2));
+height:250px;
+display:flex;
+justify-content:center;
+align-items: center;
+flex-direction:column;
+}
+
+.fw-bold{
+    font-weight: bold;
+}
+
+.text-sm{
+    font-size:14px;
+}

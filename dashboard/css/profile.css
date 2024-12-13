@@ -1,0 +1,326 @@
+
+.profile{
+    border-right:3px solid white; 
+    position: relative;
+  }
+  
+
+
+
+/* General Styles */
+.tabcontent {
+    display: none;
+}
+
+.tab .btn {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.tab .btn:hover,
+.tab .btn:focus {
+    background-color: blue !important;
+    color: white;
+    font-size: 14px;
+}
+
+.tab .btn.active {
+    background-color: blue !important;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 14px;
+}
+
+/* Table Content */
+td a {
+    font-size: 0.7rem !important;
+}
+
+td #refresh,
+td #mark,
+td #trash {
+    border: 2px solid skyblue;
+    padding: 4px 10px;
+}
+
+small {
+    font-size: 0.8rem;
+}
+
+.btn-success {
+    font-size: 0.8rem;
+}
+
+/* Message Buttons */
+#messages_home .btn-primary,
+#messages_home .btn-trash {
+    font-size: 0.8rem;
+}
+
+#messages_home .btn-primary {
+    border-right: 2px solid black;
+}
+
+#messages_home .btn-trash {
+    background-color: inherit;
+    border-right: 2px solid black;
+    color: black !important;
+}
+
+#messages_home .btn-trash:hover {
+    color: white !important;
+}
+
+/* Form Styles */
+.computer_details input {
+    font-size: 12px;
+    margin-left: 45px;
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
+}
+
+.computer_details input:focus {
+    outline: 2px solid skyblue !important;
+    border: 2px solid skyblue !important;
+}
+
+#label {
+    font-size: 12px;
+}
+
+input,
+textarea {
+    font-size: 12px;
+}
+
+input[type=text] {
+    font-size: 12px !important;
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+#active {
+    background-color: white;
+    width: 100%;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 767px) {
+    input::placeholder {
+        text-align: left;
+    }
+
+    #battery {
+        font-size: 11px;
+    }
+
+    div p {
+        font-size: 12px;
+        width: 100%;
+        padding: 15px 30px;
+        margin-top: 25px;
+        border: 1px solid rgba(225, 225, 285, 0.8);
+        background-color: rgba(225, 225, 285, 0.8);
+    }
+}
+
+@media only screen and (max-width: 468px) {
+    input::placeholder {
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #whatsapp {
+        margin: 10px 0px !important;
+        width: 100% !important;
+    }
+}
+
+/* Dropdown and Col Styles */
+select {
+    font-size: 12px !important;
+    margin-top: 10px;
+}
+
+.col-md-6 {
+    margin-top: 10px;
+}
+
+.col-md-6 h6 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.col-md-9 h6 {
+    font-weight: bold;
+}
+
+#label {
+    font-size: 13px;
+    background-color: rgba(240, 240, 240, 0.9);
+    padding: 20px 23px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+#product input {
+    width: 100%;
+}
+
+.button_dashboard {
+    margin-top: 10px;
+}
+
+.button_logout {
+    margin-top: 10px;
+}
+
+.button_logout:hover {
+    text-decoration: none;
+    color: red;
+}
+
+#first_name,
+#last_name {
+    width: 44%;
+    margin-right: 45px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+@media only screen and (max-width: 498px) {
+    #first_name,
+    #last_name {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 15px;
+    }
+}
+
+input[type=email],
+input[type=text],
+input[type=password] {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+}
+
+input[type=email]:focus,
+input[type=text]:focus,
+input[type=password]:focus {
+    outline: 3px solid skyblue;
+    border: 1px solid transparent;
+}
+
+#business_name {
+    font-size: 14px;
+}
+
+#business_email {
+    font-size: 14px !important;
+}
+
+#business_email::placeholder {
+    font-size: 14px;
+}
+
+#contact {
+    width: 30%;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+@media only screen and (max-width: 498px) {
+    #contact {
+        width: 100%;
+        margin-right: 0px;
+    }
+}
+
+/* Address Details */
+.address_details {
+    width: 43%;
+    margin-right: 5px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+    text-transform: capitalize;
+}
+
+@media only screen and (max-width: 498px) {
+    .address_details {
+        width: 100%;
+        margin-right: 0px;
+    }
+}
+
+textarea {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+    font-size: 13px !important;
+}
+
+#business_category {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+    font-size: 13px !important;
+}
+
+#time {
+    width: 32%;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    padding: 5px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+}
+
+@media only screen and (max-width: 498px) {
+    #time {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    small {
+        font-size: 14px !important;
+    }
+}
+
+/* Links Styling */
+#links {
+    width: 22%;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+@media only screen and (max-width: 498px) {
+    #links {
+        width: 100%;
+        margin-bottom: 30px;
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+
+/* Button Danger */
+.btn-danger {
+    font-size: 12px;
+    margin-left: -20px;
+    margin-right: 10px;
+}

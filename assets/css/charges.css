@@ -1,0 +1,50 @@
+h2 .bg-skyblue{
+    background-color: #e2f6ff;
+    padding:20px 10px;
+}
+
+.notice{
+    font-weight:bold;
+    margin-right:5px;
+}
+
+.text-sm{
+    font-size:14px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    padding:20px;
+}
+
+table tr{
+    width: 100%;
+  
+}
+
+.table-responsive {
+    width: 100%; /* Ensures the table is responsive */
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+}
+
+.table-striped,
+.table-hoverable {
+    width: 100%; /* Make the table full width */
+    border-collapse: collapse; /* Collapse borders for a cleaner look */
+}
+
+.table-striped th,
+.table-striped td {
+    padding: 20px; /* Add padding to table cells */
+    border: 1px solid #ccc; /* Add borders to cells */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9; /* Light background for odd rows */
+}
+
+.table-hoverable tbody tr:hover {
+    background-color: #f1f1f1; /* Change background on hover */
+}
+
