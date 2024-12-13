@@ -1,3 +1,9 @@
+<?php
+if(isset($_GET['details']) && !empty($_GET['details'])){
+$details = $_GET['details'];
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,11 +77,13 @@
      <?php include 'components/footer.php';?>
  </div>
 
+<input type="hidden" id='details'  value='<?php echo$details;?>'>
 
 <script>
      $(".btn-login").on("click", function(e){
         $("#loading-image").show();
          e.preventDefault();
+         let details = $("#details").val();
          let formData = $("#login-form").serialize();
          $.ajax({
              type: "POST",
@@ -86,8 +94,16 @@
 
                  if (response == 1) {
                     $("#login-form")[0].reset();
-                     window.location.href = "dashboard/dashboard.php";    
 
+                     if(details!=""){
+                        window.location.href = details;
+
+                     }
+
+                     else{
+                         window.location.href = "dashboard/dashboard.php";
+                     }
+                        
                   }
 
                  else{

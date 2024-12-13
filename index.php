@@ -93,9 +93,9 @@ while ($row = mysqli_fetch_assoc($states)) {
           <div>
               
 
-               <img src="assets/icons/information-technology.png" alt="efix">
+               <a href='service-providers.php?work=information technology'><img src="assets/icons/information-technology.png" alt="efix"></a>
 
-               <span><a>information technology</a> </span>
+               <span><a class='text-dark fw-bold' href='service-providers.php?work=information technology'>information technology</a> </span>
 
           </div>
 
@@ -104,7 +104,7 @@ while ($row = mysqli_fetch_assoc($states)) {
              
               <img src="assets/icons/electrical.png" alt="efix">
 
-              <span><a>inverter services</a></span>
+              <span><a class='text-dark fw-bold' href='service-providers.php?work=inverter services'>inverter services</a></span>
           
          </div>
 
@@ -113,16 +113,19 @@ while ($row = mysqli_fetch_assoc($states)) {
              
              <img src="assets/icons/ac.png" alt="efix">
 
-             <span><a>Ac</a></span>
+             <span><a class='text-dark fw-bold' href='service-providers.php?work=Air conditioner'>Ac</a></span>
          
         </div>
 
            
         <div>
              
-             <img src="assets/icons/mechanics.png" alt="efix">
+        <a>
+            <img src="assets/icons/mechanics.png" alt="efix">
              
-             <span><a>mechanic</a> </span>
+             <span><a class='text-dark text-sm fw-bold' href='service-providers.php?work=mechanic'>mechanic</a></span>
+            
+         </a>
 
          </div>
          
@@ -130,8 +133,8 @@ while ($row = mysqli_fetch_assoc($states)) {
          <div>
              
           <img src="assets/icons/make-up.png" alt="efix"> 
-
-          <span><a>Makeup Artists</a> </span>
+ 
+          <span><a class='text-dark fw-bold' href='service-providers.php?work=makeup artists'>Makeup Artists</a> </span>
           
          </div>
           
@@ -140,7 +143,7 @@ while ($row = mysqli_fetch_assoc($states)) {
          <div>
            <img src="assets/icons/vulganizer.png" alt="efix">
 
-           <span><a>vulganizer</a></span>
+           <span><a class='text-dark fw-bold' href='service-providers.php?work=vulganizer'>vulganizer</a></span>
 
          </div>
 
@@ -149,7 +152,7 @@ while ($row = mysqli_fetch_assoc($states)) {
          <div>
            <img src="assets/icons/car-wash.png" alt="efix">
 
-           <span><a>Car Wash</a></span>
+           <span><a class='text-dark fw-bold' href='service-providers.php?work=car wash'>Car Wash</a></span>
 
          </div>
 
@@ -158,7 +161,7 @@ while ($row = mysqli_fetch_assoc($states)) {
          <div>
            <img src="assets/icons/pet-service.png" alt="efix">
 
-           <span><a>Pet Service</a></span>
+           <span><a class='text-dark fw-bold' href='service-providers.php?work=pet service'>Pet Service</a></span>
 
          </div>
 
@@ -167,7 +170,7 @@ while ($row = mysqli_fetch_assoc($states)) {
          <div>
            <img src="assets/icons/counselling.png" alt="efix">
 
-           <span><a>Counseling</a></span>
+           <span><a class='text-dark fw-bold' href='service-providers.php?work=counselling'>Counseling</a></span>
 
          </div>
 
@@ -176,7 +179,7 @@ while ($row = mysqli_fetch_assoc($states)) {
             
            <img src="assets/icons/cleaning.png" alt="efix">
 
-           <span><a>Cleaning</a></span>
+           <span><a class='text-dark fw-bold' href='service-providers.php?work=cleaning'>Cleaning</a></span>
 
          </div>
 
@@ -186,7 +189,7 @@ while ($row = mysqli_fetch_assoc($states)) {
             
            <img src="assets/icons/hairdressers.png" alt="efix">
 
-           <span><a>Hairdressers</a></span>
+           <span><a class='text-dark fw-bold' href='service-providers.php?work=hairdressers'>Hairdressers</a></span>
 
          </div>
 
@@ -196,7 +199,7 @@ while ($row = mysqli_fetch_assoc($states)) {
             
             <img src="assets/icons/wellness.png" alt="efix">
  
-            <span><a>Wellness</a></span>
+            <span><a class='text-dark fw-bold' href='service-providers.php?work=wellness'>Wellness</a></span>
  
           </div>
 
@@ -359,8 +362,8 @@ $(document).ready(function() {
                 // Create product HTML
                 product_html += `
                 <div class='package'>
-                    <div class='imgitem'><img id='imgitem' src='${image_url}' alt='${product_name}'></div>
-                    <span id="nameitem"><a href="#">${product_name}</a></span>
+                    <div class='imgitem'><a href='https://estores.ng/product-details.php?id=${product_id}'><img id='imgitem' src='${image_url}' alt='${product_name}'></a></div>
+                    <span id="nameitem"><a href="https://estores.ng/product-details.php?id=${product_id}">${product_name}</a></span>
                     <span id='priceitem'>${product_price}</span>
                     <div class='d-flex justify-content-space-between align-items-center g-5'>
                           <span id='locitem'>${product_location}</span>

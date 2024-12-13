@@ -1,3 +1,6 @@
+
+
+
 <div class='container'>
 
     <div class="sectionB">
@@ -79,9 +82,11 @@
 
 
           <div>
-
-              <a class='text-dark fw-bold fs-4'>Post an advert here</button>
-
+              <?php if(isset($_SESSION['id']) || isset($_SESSION['id'])){ ?>
+                  <a href='work-experience.php' class='text-dark fw-bold fs-4'>Post an advert here</button>
+              <?php } else {?>
+                  <a href='login.php?details=work-experience.php' class='text-dark fw-bold fs-4' href='login.php'>Post an advert here</button>
+              <?php }?>
           </div>
 
 

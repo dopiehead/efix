@@ -1,3 +1,11 @@
+<?php 
+
+if(isset($_GET['work']) && !empty($_GET['work'])){
+    $work = $_GET['work'];
+}
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +20,7 @@
     
  <div class="container">
 
- <h6 class="mt-4 fw-bold">Plumber services around you</h6>
+ <h6 class="mt-4 fw-bold"><?php if(!empty($work)) {echo $work;} ?> services around you</h6>
 
   <br><br>
 
@@ -120,16 +128,7 @@
 
          </div>
 
-                 
-
-
-
            </div>
-
-
-
-
-
 
            <div>
 

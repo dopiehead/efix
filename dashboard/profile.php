@@ -1,3 +1,61 @@
+<?php session_start();
+
+require('../engine/config.php');
+
+if(isset($_SESSION['sp_email'])){
+
+     $sp_email = $_SESSION['sp_email'];
+     $get_user = mysqli_query($conn, "SELECT * FROM service_providers WHERE sp_email = '". $sp_email."' and sp_verified = 1");
+     if($get_user->num_rows>0){ 
+         while($row = mysqli_fetch_array($get_user)){
+              $user_id = $row["sp_id"];
+              $user_name = $row["sp_name"];
+              $user_email = $row["sp_email"];
+              $user_img = $row["sp_img"];
+              $user_phone = $row["sp_phonenumber1"];
+              $user_phone1 = $row["sp_phonenumber2"];
+              $user_location = $row["sp_location"];
+              $user_experience = $row["sp_experience"];
+              $user_bio = $row["sp_bio"];
+              $user_type = "service provider";
+
+          }
+
+      }
+
+    }
+
+
+    
+elseif(isset($_SESSION['email'])){
+
+    $email = $_SESSION['email'];
+    $get_user = mysqli_query($conn, "SELECT * FROM user_profile WHERE user_email = '". $email."' and verified = 1");
+    if($get_user->num_rows>0){ 
+        while($row = mysqli_fetch_array($get_user)){
+             $user_id = $row["id"];
+             $user_name = $row["user_name"];
+             $user_email = $row["user_email"];
+             $user_img = $row["user_image"];
+             $user_phone = $row["user_phone"];            
+             $user_location = $row["user_location"];
+             $user_type = "buyer";
+        
+
+         }
+
+     }
+
+   }
+
+
+   else{
+    header("location:../login.php");
+    exit(); 
+   }
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -80,17 +138,17 @@
       </table>
 
 
- <small>Neeyo</small><br>
+ <small><?php echo $user_name; ?></small><br>
 
 
 <small></small><br>
 <small>Dial code +234</small><br>
 
 
-<small> 0908754324</small><br>
-<small> 0908765453</small><br>
-
-<small>Dial code +234</small><br>
+<small> <?php echo$user_phone ?></small><br>
+<?php if(!empty($user_phone1)){?> 
+<small><?php $user_phone1 ?></small><br>
+<?php } ?>
 
    <br>
   <span class='mb-3'>
@@ -116,24 +174,22 @@
 
 <form id="editpage-details">
 
-<input type="text" id="first_name" name="first_name" placeholder="Full Name"><br>
+<input type="text" id="first_name" name="first_name" placeholder="Full Name" value='<?php echo$user_name; ?>'><br>
 
 <input type="hidden"  name="sid" value="">
 <input type="hidden"  name="user_type" value="">
-
-<input id="business_name" name="business_name" type="text" class="form-control" placeholder="Business Name"><br>
-
-
 
 <input id="first_name"  type="password" name="password" placeholder="Password"><input id="first_name"  type="password" name="cpassword" placeholder="Confirm Password"><br>
 
 <h6>Contact information</h6>
 
-<input type="text" name="country" placeholder="Country" id="contact"><input type="text" name="contact" id="contact"  placeholder="Phone number">
+<input type="text" name="country" id='country' class='py-1' placeholder="Country" value='<?php echo$user_location;?>'>
 
-<input type="text" name="whatsapp" id="whatsapp" placeholder="Whatsapp"><br>
+<input type="text" name="contact" id="contact"  placeholder="Phone number" value='<?php echo$user_phone;?>'>
 
-<input id="business_email" type="email" style="font-size:14px !important" name="" class="form-control" value="" placeholder="Email Address"><br>
+<input type="text" name="whatsapp" id="whatsapp" class='py-1' placeholder="Whatsapp"><br>
+
+<input id="email" type="email" style="font-size:14px !important" name="" class="form-control" placeholder="Email Address" value='<?php echo $user_email;?>'><br>
 
 <h6> Address Details</h6><br>
 
@@ -144,16 +200,6 @@
 
 <span id='lg'></span>
 
-<h6> About Your Organisation</h6><br>
-
-<textarea class="form-control" name="about" placeholder="About Your Organization" wrap="physical"></textarea><br>
-
-<textarea class="form-control" name="services" placeholder="Services Your Organization Provides, ...." wrap="physical"></textarea><br>
-
-<select name="business_category" id="business_category" class="form-control" style="text-transform: capitalize;">
-
-
-</select><br>
 
 <h6>Availability</h6><br>
 
@@ -212,9 +258,6 @@ evt.currentTarget.className += " active";
 document.getElementById("defaultOpen").click();
 </script>
 
-
-
-
  <script>
 
 $('#lg').html("<select  id='lga' class=' lga address_details'><option>Business Axis</option></select>");
@@ -233,5 +276,68 @@ var location = $(this).val();
 
 </script>
      
+
+<script type="text/javascript">
+
+  $('#btn-submit').on('click',function(){
+      
+       $(".loading-image").show();
+
+      $.ajax({
+
+            type: "POST",
+
+            url: "edit-page.php",
+
+            data:  $("#editpage-details").serialize(),
+
+            cache:false,
+
+            contentType: "application/x-www-form-urlencoded",
+
+             success: function(response) {
+             
+             if (response==1) {
+
+            
+            swal({
+              
+              text:"Details update is saved",
+
+              icon:"success",
+
+            });
+           $("#editpage-details")[0].reset();
+           
+            $(".loading-image").hide();
+
+              $("#myformx").hide();
+
+          }
+            
+             else{
+
+              swal({
+
+                   text:response,
+                   icon:"error",
+
+              });
+             }
+
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+
+                console.log(errorThrown);
+
+            }
+
+        })
+
+    });
+
+</script>
+
 </body>
 </html>
