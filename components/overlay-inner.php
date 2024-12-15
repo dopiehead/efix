@@ -13,9 +13,9 @@
 
          </div> 
 
-         <div>
+         <div class='logo-container'>
 
-           <a href='index.php'>LOGO</a>
+           <a href='index.php'><img src ='assets/img/logo.png'></a>
 
          </div>
 

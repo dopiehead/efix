@@ -16,9 +16,9 @@
 
       <div class='nav-bar'>
 
-          <div>
+          <div class='logo-container'>
             
-             logo
+          <img src ='assets/img/logo.png'>
 
 
           </div>

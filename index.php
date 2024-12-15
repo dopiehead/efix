@@ -20,6 +20,16 @@
      </div>
 
 
+      <div class='search-bar'>
+
+           <input type="text" class='bg-white rounded rounded-pill border-0 py-2'> <button class='btn btn-dark text-white rounded rounded-pill text-sm'>Search</button>
+
+      </div>
+
+
+
+
+
      <ul class='link-container fw-bold'>
 
           <li><a href='service-providers.php'>Service providers</a></li>
@@ -29,6 +39,15 @@
           <li><a href='profile.php'>Sell a product</a> </li> 
 
      </ul>
+
+
+
+
+
+
+
+
+
 
      <div class='create-container fw-bold'>
        
@@ -379,8 +398,8 @@
          <img src="assets/img/woman.jpg" alt="">
 
          <div class='d-flex flex-row flex-column'>
-            <span class='text-sm fw-bold'>Neeyo</span>
-            <span class='text-sm text-secondary'>Senior designer , Edirect.ng</span>
+            <span class='text-sm fw-bold'>Peter</span>
+            <span class='text-sm text-secondary'>Senior developer , Edirect.ng</span>
          </div>
 
      </div>
@@ -414,7 +433,7 @@
               <br>
          <h4 class='my-4 fw-bold'>Booking form</h4>
 
-         <p class='text-secondary'>Fill out the form below to get on your project</p>
+         <p class='text-secondary'>Fill out the form below to get a quote on your project</p>
 
          <div class='d-flex g-3 flex-md-row flex-column'>
 

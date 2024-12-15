@@ -17,6 +17,12 @@ gap:10px;
 
 }
 
+.logo-container img{
+    width:150px;
+    height:auto;
+}
+
+
 
 @media screen  and (max-width: 768px){
  
