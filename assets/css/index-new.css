@@ -107,6 +107,9 @@
     
 }
 
+/* start of mobile overlay */
+
+
 
 
 /* end of navigation */
@@ -123,12 +126,17 @@
 @media screen and (max-width: 768px){
     
 .bg-section{
-     padding:0 1em;
+    
      gap:0.4em;
      width: 100%;
 }
 
 }
+
+.bg-text span{
+    font-size: 13px;
+}
+
 
 
 .bg-section h1, .bg-section p{
@@ -141,7 +149,9 @@
     } 
 
     .bg-section h1{
-      font-size: 2.5rem;
+      font-size: 1.8rem;
+      font-weight:bolder;
+      width: 10rem;
    } 
    
    .bg-section p{
@@ -157,6 +167,19 @@
       /* width:100%; */
 }
 
+@media screen  and (max-width:768px){
+    
+   .button-container{  
+          margin-top:-20px;
+          position: relative;
+          width:100%;
+          
+    /* width:100%; */
+}
+}
+
+
+
 .button-container a:nth-child(1){
       background-color:orange;
       color:white;
@@ -166,6 +189,25 @@
       background-color:white;
       color:black;
    
+}
+
+
+@media screen  and (max-width:768px){
+    .button-container a:nth-child(1){
+        background-color:orange;
+        color:white;
+        width: 100%;
+        font-size:0.8rem;
+  }
+  
+  .button-container a:nth-child(2){
+        background-color:white;
+        color:black;
+        width: 100%;
+        font-size:0.8rem;
+     
+  }
+
 }
 
 .bg-img img{
@@ -208,12 +250,14 @@
       
 }
 
-
-
+.about-home{
+    position: relative;
+    margin-top:0;
+}
 
 
 .about-section{
-      top: 100%;
+      top: 2.2rem;
       position: absolute;
       margin: auto;
       left: 0;
@@ -300,9 +344,9 @@
      
           .services div{
     
-                width:6rem;
-                height:auto;
-                gap:8px;
+                width:8rem;
+                height:8rem;
+                gap:5px;
               
           }     
     
@@ -323,8 +367,8 @@
      
           .services div img{
     
-                width:80%;
-                height:80px;
+                width:50px;
+                height:50px;
               
           }     
     
@@ -336,6 +380,18 @@
       text-transform: capitalize;
           }
             
+
+          @media screen and (max-width: 768px){
+                
+            .services div span{
+                font-size:14px;
+                text-transform: capitalize;
+                    }
+
+          }
+
+
+
 
 
   .appointments{
@@ -368,4 +424,45 @@
 
   .g-3{
     gap:5px;
+  }
+
+  .g-5{
+    gap: 10px;
+  }
+
+  .contact-container{
+     display: flex;
+     flex-direction: column;
+     gap:25px; 
+  }
+
+  .jumbotron label, .jumbotron input{
+     font-size:0.9rem;
+  }
+
+  .contact-container .contact-content{
+     box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+     height:7rem;
+     align-items:flex-start;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     gap:4px;
+     
+  }
+
+  .contact-container .contact-content div{
+     display: flex;
+     flex-direction:column;
+     gap: 4px;
+
+  }
+
+  input[type=date]::placeholder{
+    opacity:0.5 !important;
+  }
+
+  input:focus,textarea:focus{
+    border:none;
+    outline: none;
   }

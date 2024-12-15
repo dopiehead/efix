@@ -47,22 +47,38 @@
 
 </div>
 
+<!-- start of mobile overlay -->
+
+
+
+
+
+
+<!-- end of header/navigation -->
+
+
+
+
+
+
+
+
 
      <div class='container bg-section'>
 
         <div class='bg-text mt-4 pt-3 '>
 
-              <span class='text-warning text-sm bg-white rounded rounded-pill py-1 px-2'>READY TO HELP YOU !</span><br><br>
+              <span class='text-warning  bg-white rounded rounded-pill py-1 px-2'>READY TO HELP YOU !</span><br><br>
 
-              <h1 class='fw-bold'>The best solution for every house problem</h1><br>
+              <h1 class='fw-bold'>The best solution for every house problem</h1>
 
               <p class='text-secondary'>Our open, positive and proactive approach helps us find ways to align your work environment with the children</p><br>
 
               <div class='button-container'>
             
-                  <a class='rounded rounded-pill px-3 py-1 fw-bold  text-center'>Book now</a>
+                  <a class='rounded rounded-pill px-2 py-1 fw-bold  text-center'>Book now</a>
 
-                 <a class='rounded rounded-pill px-3 py-1 fw-bold  text-center'>Read more</a>
+                 <a class='rounded rounded-pill px-2 py-1 fw-bold  text-center'>Read more</a>
         
              </div>
 
@@ -79,7 +95,7 @@
 
 
 <!-- body part -->
-
+<div class='about-home'>
 
  <div class='container about-section'>
 
@@ -103,11 +119,13 @@
 
      </div>
 
+     </div>
+
  </div>
 
 
 
- <div class='bg-dark service-container text-center '>
+ <div class='bg-secondary service-container text-center '>
 
 
  
@@ -123,7 +141,7 @@
     
               <a href='service-providers.php?work=information technology'><img src="assets/icons/information-technology-white.png" alt="efix"></a>
 
-              <span><a class='text-warning fw-bold' href='service-providers.php?work=information technology'>information technology</a> </span>
+              <span><a class='text-white fw-bold' href='service-providers.php?work=information technology'>information technology</a> </span>
 
          </div>
 
@@ -132,7 +150,7 @@
             
              <img src="assets/icons/electrical-white.png" alt="efix">
 
-             <span><a class='text-warning fw-bold' href='service-providers.php?work=inverter services'>inverter services</a></span>
+             <span><a class='text-white fw-bold' href='service-providers.php?work=inverter services'>inverter services</a></span>
          
         </div>
 
@@ -141,7 +159,7 @@
             
             <img src="assets/icons/ac.png" alt="efix">
 
-            <span><a class='text-warning  fw-bold' href='service-providers.php?work=Air conditioner'>Ac</a></span>
+            <span><a class='text-white  fw-bold' href='service-providers.php?work=Air conditioner'>Ac</a></span>
         
        </div>
 
@@ -151,7 +169,7 @@
   
            <img src="assets/icons/mechanics-white.png" alt="efix">
             
-            <span><a class='text-warning text-sm fw-bold' href='service-providers.php?work=mechanic'>mechanic</a></span>
+            <span><a class='text-white text-sm fw-bold' href='service-providers.php?work=mechanic'>mechanic</a></span>
            
     
 
@@ -162,7 +180,7 @@
             
          <img src="assets/icons/make-up-white.png" alt="efix"> 
 
-         <span><a class='text-warning  fw-bold' href='service-providers.php?work=makeup artists'>Makeup Artists</a> </span>
+         <span><a class='text-white  fw-bold' href='service-providers.php?work=makeup artists'>Makeup Artists</a> </span>
          
         </div>
          
@@ -171,7 +189,7 @@
         <div>
           <img src="assets/icons/vulganizer-white.png" alt="efix">
 
-          <span><a class='text-warning fw-bold' href='service-providers.php?work=vulganizer'>vulganizer</a></span>
+          <span><a class='text-white fw-bold' href='service-providers.php?work=vulganizer'>vulganizer</a></span>
 
         </div>
 
@@ -180,7 +198,7 @@
         <div>
           <img src="assets/icons/car-wash.png" alt="efix">
 
-          <span><a class='text-warning  fw-bold' href='service-providers.php?work=car wash'>Car Wash</a></span>
+          <span><a class='text-white  fw-bold' href='service-providers.php?work=car wash'>Car Wash</a></span>
 
         </div>
 
@@ -190,7 +208,7 @@
 
           <img src="assets/icons/pet-service.png" alt="efix">
 
-          <span><a class='text-warning fw-bold' href='service-providers.php?work=pet service'>Pet Service</a></span>
+          <span><a class='text-white fw-bold' href='service-providers.php?work=pet service'>Pet Service</a></span>
 
         </div>
 
@@ -199,7 +217,7 @@
         <div>
           <img src="assets/icons/counselling-white.png" alt="efix">
 
-          <span><a class='text-warning  fw-bold' href='service-providers.php?work=counselling'>Counseling</a></span>
+          <span><a class='text-white  fw-bold' href='service-providers.php?work=counselling'>Counseling</a></span>
 
         </div>
 
@@ -208,7 +226,7 @@
            
           <img src="assets/icons/cleaning-white.png" alt="efix">
 
-          <span><a class='text-warning fw-bold' href='service-providers.php?work=cleaning'>Cleaning</a></span>
+          <span><a class='text-white fw-bold' href='service-providers.php?work=cleaning'>Cleaning</a></span>
 
         </div>
 
@@ -218,7 +236,7 @@
            
           <img src="assets/icons/hairdressers-white.png" alt="efix">
 
-          <span><a class='text-warning  fw-bold' href='service-providers.php?work=hairdressers'>Hairdressers</a></span>
+          <span><a class='text-white  fw-bold' href='service-providers.php?work=hairdressers'>Hairdressers</a></span>
 
         </div>
 
@@ -228,7 +246,7 @@
            
            <img src="assets/icons/wellness-white.png" alt="efix">
 
-           <span><a class='text-warning fw-bold' href='service-providers.php?work=wellness'>Wellness</a></span>
+           <span><a class='text-white fw-bold' href='service-providers.php?work=wellness'>Wellness</a></span>
 
          </div>
 
@@ -333,11 +351,11 @@
 <p class='text-sm fw-bold w-50 text-center'>Working with this handyman was a breeze, their expertise in handling tasks were impressive</p>
  
      <div class='d-flex align-items-center g-3'>
-          <img src="assets/img/woman.jpg" alt="">
+          <img src="assets/img/guy.jpg" alt="">
 
          <div class='d-flex flex-row flex-column'>
-            <span class='text-sm fw-bold'>Neeyo</span>
-            <span class='text-sm text-secondary'>Senior designer , Edirect.ng</span>
+            <span class='text-sm fw-bold'>AdeWale</span>
+            <span class='text-sm text-secondary'>Senior developer , Ebnbhotel.ng</span>
          </div>
 
      </div>
@@ -381,60 +399,68 @@
  </div>
 
 
- <div class='container'>
+ <div class='container mt-5'>
      
-     <div>
+     <div class='fw-bold'>
           
-         <span>Contact us</span>
-
-         <h4>Booking form</h4>
+         <span class='bg-white rounded rounded-pill px-2 py-1 text-warning fw-bold mb-4'>Contact us</span>
+              <br>
+         <h4 class='my-4 fw-bold'>Booking form</h4>
 
          <p class='text-secondary'>Fill out the form below to get on your project</p>
 
-         <div class='d-flex g-3'>
+         <div class='d-flex g-3 flex-md-row flex-column'>
 
                <div class='col-md-6'>
 
                       <div class='jumbotron'>
                        
                           <form>
-                             <div class='d-flex'>
-                                 <div>
+
+                             <div class='d-flex g-5 flex-md-row flex-column'>
+                                
+                                 <div class='d-flex flex-row flex-column'>
                                      <label for="full name">Full name</label>
-                                     <input type="text" class='border-0'>
+                                     <input type="text" placeholder="Full name" class='border-0'>
                                  </div>
 
-                                 <div>
+                                 <div class='d-flex flex-row flex-column'>
                                      <label for="email">Email</label>
-                                     <input type="email" class='border-0'>
+                                     <input type="email" placeholder="Enter email address" class='border-0'>
                                  </div>
 
                              </div>
 
-                             <div class='d-flex'>
-                                 <div>
+                             <br>
+ 
+                             <div class='d-flex g-5 flex-md-row flex-column'>
+                                 <div  class='d-flex flex-row flex-column'>
                                      <label for="telephone">Telephone</label>
-                                     <input type="number" class='border-0'>
+                                     <input type="number" placeholder="Enter phone number" class='border-0' min='0' min-length='11'>
                                  </div>
 
-                                 <div>
+                                 <div  class='d-flex flex-row flex-column'>
                                      <label for="date">Date</label>
-                                     <input type="date" class='border-0'>
+                                     <input type="date" placeholder='Select date' class='border-0 px-4' >
                                  </div>
 
                              </div>
+
+                             <br>
 
                              <div>
                               
 
-                                 <div class='d-flex flex-row flex-column'>
+                                 <div class='d-flex flex-row flex-column g-3'>
                                      <label for="date">Address</label>
-                                     <textarea placeholder='Input an address' class='border-0'></textarea>
+                                     <textarea placeholder='Input an address' rows='5' class='border-0 text-sm'></textarea>
                                  </div>
 
                              </div>
 
-                             <button class='btn btn-danger'>Get a Quote</button>
+                             <br>
+
+                             <button class='btn btn-warning text-white text-sm'>Get a Quote  <i class='fa fa-chevron-right'></i></button>
                             
 
                            </form>
@@ -446,9 +472,9 @@
 
                <div class='col-md-6'>
 
-                   <div class='d-flex flex-row flex-column g-3'>
+                   <div class='contact-container'>
 
-                          <div class='shadow p-1'>
+                          <div class='contact-content py-1 px-2'>
 
                               <span><i class='fa fa-map-marker'></i></span>
 
@@ -456,19 +482,20 @@
 
                           </div>
 
-                           <div class='shadow p-1'>
+                           <div class='contact-content px-2 py-1'>
                              
                            <span><i class='fa fa-phone'></i></span>
 
-                           <span><a href="tel:+2348045432121">(+234) 08045434125</a></span>
+                           <span><a class='text-dark text-sm fw-bold' href="tel:+2348045432121">(+234) 08045434125</a></span>
 
                            </div>
 
 
-                          <div class='d-flex shadow p-1 full-height h-100'>
-                              <span><i class='fa fa-envelope'></i></span>
-                              <span><a href='mailto:info@efix.ng'>info@efix.ng</a></span>
-
+                          <div class='contact-content px-2 py-1'>
+                                 <div>
+                                      <span><i class='fa fa-envelope'></i></span>
+                                      <span><a class='text-dark text-sm fw-bold' href='mailto:info@efix.ng'>info@efix.ng</a></span>
+                                 </div>
                           </div>
 
 
@@ -530,6 +557,22 @@ if (prevButton && nextButton) {
 }
 </script>
 
+
+<script>
+
+      function openform() {
+          document.getElementById("myform").
+          style.width="49%";
+     }  
+
+     function closeform() {
+          document.getElementById("myform").
+         style.widtht="0%";
+     }
+
+
+
+</script>
 
 
     
