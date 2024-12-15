@@ -381,7 +381,7 @@
  </div>
 
 
- <div>
+ <div class='container'>
      
      <div>
           
@@ -391,7 +391,7 @@
 
          <p class='text-secondary'>Fill out the form below to get on your project</p>
 
-         <div class='d-flex'>
+         <div class='d-flex g-3'>
 
                <div class='col-md-6'>
 
@@ -401,12 +401,12 @@
                              <div class='d-flex'>
                                  <div>
                                      <label for="full name">Full name</label>
-                                     <input type="text">
+                                     <input type="text" class='border-0'>
                                  </div>
 
                                  <div>
-                                     <label for="email">Full name</label>
-                                     <input type="text">
+                                     <label for="email">Email</label>
+                                     <input type="email" class='border-0'>
                                  </div>
 
                              </div>
@@ -414,12 +414,12 @@
                              <div class='d-flex'>
                                  <div>
                                      <label for="telephone">Telephone</label>
-                                     <input type="number">
+                                     <input type="number" class='border-0'>
                                  </div>
 
                                  <div>
                                      <label for="date">Date</label>
-                                     <input type="date">
+                                     <input type="date" class='border-0'>
                                  </div>
 
                              </div>
@@ -427,9 +427,9 @@
                              <div>
                               
 
-                                 <div>
+                                 <div class='d-flex flex-row flex-column'>
                                      <label for="date">Address</label>
-                                     <textarea placeholder='Input an address'></textarea>
+                                     <textarea placeholder='Input an address' class='border-0'></textarea>
                                  </div>
 
                              </div>
@@ -446,22 +446,28 @@
 
                <div class='col-md-6'>
 
-                   <div class='d-flex'>
+                   <div class='d-flex flex-row flex-column g-3'>
 
-                          <div class='shadow'>
+                          <div class='shadow p-1'>
 
+                              <span><i class='fa fa-map-marker'></i></span>
+
+                              <span>No 24 Iyalla Street Ikeja, Lagos state.</a></span>
 
                           </div>
 
-                           <div class='shadow'>
+                           <div class='shadow p-1'>
                              
-                           <i class='fa fa-phone'></i>
+                           <span><i class='fa fa-phone'></i></span>
+
+                           <span><a href="tel:+2348045432121">(+234) 08045434125</a></span>
 
                            </div>
 
 
-                          <div class='shadow'>
-
+                          <div class='d-flex shadow p-1 full-height h-100'>
+                              <span><i class='fa fa-envelope'></i></span>
+                              <span><a href='mailto:info@efix.ng'>info@efix.ng</a></span>
 
                           </div>
 
