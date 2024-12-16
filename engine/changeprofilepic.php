@@ -1,21 +1,26 @@
 <?php session_start();
+
 require 'config.php';
+
 $myid = mysqli_real_escape_string($conn,$_POST['id']);
-//if it is set to buyers only change folder accordingly
+
 if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
     $imageFolder="../uploads/buyers/";
 }
 
-//if it is set to service providers only change folder accordingly
+
   if (isset($_SESSION['sp_id']) && !empty($_SESSION['sp_id'])) {
     $imageFolder="../uploads/service-provider/";     
   }
-//get profile picture name
+
    $basename= mysqli_real_escape_string($conn,basename($_FILES["fileupload"]["name"]));
    $maxsize = 4 * 1024 * 1024;
     $myimage=$imageFolder.$basename;
+    
     $imageExtension= strtolower(pathinfo($myimage,PATHINFO_EXTENSION));
+
     $allowed_extensions = array("jpg","jpeg","png","JPG","JPEG","PNG"); 
+    
    if(!in_array($imageExtension,$allowed_extensions)){ echo "Please upload valid Image in Png and Jpeg only"; }
          $ImageSize=$_FILES['fileupload']['size'];
     if($ImageSize>$maxsize){
@@ -28,14 +33,15 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 
 if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 
-  $sql="update user_profile set user_image='".htmlspecialchars($myimage)."' where id='".htmlspecialchars($myid)."'";
+  $sql = "UPDATE user_profile SET user_image='".htmlspecialchars($myimage)."' WHERE id='".htmlspecialchars($myid)."'";
+
 
     }
 
 
     if (isset($_SESSION['sp_id']) && !empty($_SESSION['sp_id'])) {
 
-   $sql="update service_providers set sp_img='".htmlspecialchars($myimage)."' where sp_id='".htmlspecialchars($myid)."'";
+   $sql = "UPDATE service_providers SET sp_img = '".$myimage."' WHERE sp_id = '$myid'";
 
     }
 
@@ -49,6 +55,7 @@ if ($bgt) {
 
      if (isset($_SESSION['sp_id']) && !empty($_SESSION['sp_id'])) { 
          $_SESSION['sp_image']=$myimage;
+       
      }
 
         echo "1";

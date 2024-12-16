@@ -13,7 +13,7 @@ require ('config.php');
     $verified  = mysqli_real_escape_string($conn, $_POST['verified']);
     $date = date("D, F d, Y g:iA", strtotime('+1 hours'));
     $vkey = md5(time() . $user_email);
-    $secret_password = sha1($user_password);
+    $secret_password = password_hash($user_password, PASSWORD_BCRYPT);
 
     // Check if passwords match
     if ($user_password !== $confirm_password) {
@@ -47,9 +47,9 @@ require ('config.php');
     }
 
 
-    elseif(filter_var($user_email,FILTER_VALIDATE_EMAIL)){
-        echo "Email format is not valid.";  
-    }
+    // elseif(filter_var($user_email,FILTER_VALIDATE_EMAIL)){
+    //     echo "Email format is not valid.";  
+    // }
 
     else{
 
