@@ -57,7 +57,7 @@ if(isset($_POST["submit"]))   {
 
           <li><a href='charges.php'>Call out charges</a></li>
 
-          <li><a href='profile.php'>Sell a product</a> </li> 
+          <li><a href='https://estores.ng/login.php?details=post-advert.php'>Sell a product</a> </li> 
 
      </ul>
 

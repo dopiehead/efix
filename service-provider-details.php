@@ -1,3 +1,70 @@
+<?php session_start();
+ require 'engine/config.php'; 
+
+if(isset($_POST["submit"]))   {  
+if(!empty($_POST["search"]))   {  
+$query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
+header("location:search-process.php?search=" .htmlspecialchars($query)); 
+ }  
+}  
+
+ ?> 
+
+<?php
+if (isset($_GET['id'])) {
+$id = mysqli_escape_string($conn,$_GET['id']);
+$service_provider = mysqli_query($conn,"SELECT * from service_providers where sp_id ='$id'");
+$sql =  mysqli_query($conn,"UPDATE service_providers SET views = views +1 where sp_id ='$id'");
+while ($row = mysqli_fetch_array($service_provider)) {
+$sp_id =  $row['sp_id'];
+$sp_img = $row['sp_img'];
+$sp_speciality = $row['sp_speciality'];
+$sp_category = $row['sp_category'];
+$sp_name = $row['sp_name']; 
+$sp_location = $row['sp_location'];
+$sp_experience = $row['sp_experience']; 
+$sp_bio = $row['sp_bio']; 
+$sp_ratings = $row['ratings']; 
+$sp_verified = $row['sp_verified'];
+$sp_email = $row['sp_email'];
+$sp_phone1 = $row['sp_phonenumber1'];
+$sp_phone2 = $row['sp_phonenumber2'];
+$sp_price = $row['pricing'];
+$bank_name = $row['bank_name'];
+$pay = $row['pay'];
+$account_number = $row['account_number'];
+		
+	}
+	
+}
+?>
+
+
+<?php 
+
+if (isset($_SESSION["id"])) {
+$date = $_SESSION['date'];
+$userId = $_SESSION['id'];
+$username =$_SESSION['name'];
+$useremail =$_SESSION['email'];
+}
+
+
+if (isset($_SESSION["sp_id"])) {
+$date = $_SESSION['sp_date'];
+$userId = $_SESSION['sp_id'];
+$username = $_SESSION['sp_name'];
+$useremail = $_SESSION['sp_email'];
+
+}
+
+
+
+
+?>
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +84,7 @@
            
               <div class='col-md-7'>
 
-                     <img src="assets/img/john.jpg">
+                     <img class='img-service' src="<?php echo"efix/".$sp_img;?>" alt='e_fix'>
 
               </div>
 
@@ -26,31 +93,31 @@
                      <div class='d-flex justify-content-start flew-row flex-column g-5'>
 
 
-                       <h2 class='fw-bold'>Ameen Oluwole</h2>
+                       <h2 class='fw-bold'><?php echo $sp_name; ?></h2>
 
-                       <h6 class='fs-4'>Plumber</h6>
+                       <h6 class='fs-4'><?php echo $sp_category; ?></h6>
 
-                       <span class='text-sm'><i class='fa fa-map-marker fa-1x'></i> Lagos, Nigeria</span>
+                       <span class='text-sm'><i class='fa fa-map-marker fa-1x'></i> <?php echo $sp_location; ?></span>
 
-                       <span class='text-sm'> <i class='fa fa-envelope fa-1x'></i>ngnimitech@gmail.com</span>
+                       <span class='text-sm'> <i class='fa fa-envelope fa-1x'></i> <?php echo $sp_email; ?></span>
 
-                       <span class='text-sm'><i class='fa fa-phone'></i>09074456453, 07033506332</span>
+                       <span class='text-sm'><i class='fa fa-phone'></i> <?php echo $sp_phone1 ?>, <?php echo $sp_phone2; ?></span>
 
-                       <p><span class='bg-white border border-2 px-2 py-1 mr-1 fw-bold'>Experience</span> : <span>Over 12 years</span> </p>
+                       <p><span class='bg-white border border-2 px-2 py-1 mr-1 fw-bold'>Experience</span> : <span>Over <?php echo $sp_experience; ?> years</span> </p>
 
 
                        <h6 class='fw-bold mt-2'>Bio</h6>
                        
-                       <p class='text-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper, mauris at aliquet aliquet, felis ligula ultricies ligula, ac euismod mauris metus vel neque. Sed vel tortor ac arcu ultricies dignissim. Maecenas sed velit vel velit finibus dapibus. Donec vel est vel neque semper consequat.</p>
+                       <p class='text-sm'><?php echo $sp_bio; ?></p>
                       
                     </div>
                     <div>
 
-                         <span><i class='fa fa-share-alt'></i> Share</span>
+                         <span id='<?php echo $sp_id; ?>'><i class='fa fa-share-alt'></i> Share</span>
 
                          <div class='connect mt-2'>
 
-                            <span class='bg-primary text-white px-3 py-2 rounded border-0 form-control'>Book</span>
+                            <span id='<?php echo $sp_id ?>' class='bg-primary text-white px-3 py-2 rounded border-0 form-control'>Book</span>
 
                             <span class='text-info bg-white border-2 border border-info rounded px-3 py-2 form-control'>Send a message</span>
 
@@ -194,14 +261,9 @@
 
                   <p>Lorem ipsum dolor sit amet consectetur. Tellus scelerisque donec elementum donec leo integer adipiscing nunc. Commodo consectetu</p>
 
-             </div>
-
-
-              <a class='text-info bg-white mt-4 px-3 py-2 fw-bold border border-2 border-info rounded'>Post Comment</a>
-
+             </div>       
 
               </div>
-
 
 
               <div class='review-content'>
@@ -218,14 +280,20 @@
 </div>
 
 
- <a class='text-info bg-white mt-4 px-3 py-2 fw-bold border border-2 border-info rounded'>Post Comment</a>
+
 
 
  </div>
 
-          </div>
+   </div>
 
-          <br>
+   <br>
+
+   
+  <a class='text-info bg-white mt-4 px-3 py-2 fw-bold border border-2 border-info rounded'>Post Comment</a>
+       
+   
+          <br><br>
 
 
 
@@ -376,6 +444,174 @@ $('.reviews-container'). flickity({
   });
 
 
+
+</script>
+
+<script type="text/javascript">
+	
+function collapse() {
+	// body...
+$('#demo').toggleClass('active-button');
+
+}
+
+
+</script>
+
+
+<script type="text/javascript">
+$('.btn-pay').on('click',function(e){
+  if (confirm("Do you want to pay to this service provider?")) {
+  var pay = $('.btn-pay').attr('id');
+ 
+  $.ajax({
+  type: "POST",
+  url: "provider-pay.php",
+  data: 'id='+pay,
+  success: function(data) {
+
+  if (data==1) {
+  window.location="pay-sp.php"; 
+ }
+              
+else{
+swal({icon:"error",text:data});
+
+}
+           
+
+           
+
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+
+                console.log(errorThrown);
+
+            }
+
+        })
+}
+    });
+
+
+</script>
+
+
+
+
+<script type="text/javascript">
+$('#submit-sp').on('click',function(e){
+    $("#loading-image").show();
+    
+        e.preventDefault();
+        
+  $.ajax({
+           type: "POST",
+            url: "report-page.php",
+           data:  $("#report-form").serialize(),
+            cache:false,
+            contentType: "application/x-www-form-urlencoded",
+            success: function(response) {
+                
+                $("#loading-image").hide();
+            if(response==1){
+
+swal({
+text:"Your message has been recieved. Thank you!",
+icon:"success",
+});
+
+ $("#popupAbuse").hide(1000);
+    $("#report-form")[0].reset();
+             }
+
+       else { 
+       
+             swal({
+
+text:"Issue field is required",
+icon:"error",
+
+});
+         
+            
+}  
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+
+                console.log(errorThrown);
+
+            }
+
+        })
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    
+    function toggle_abuse() {
+
+var popup = document.getElementById('popupAbuse');
+popup.classList.toggle('active');
+  }
+
+</script>
+
+<script type="text/javascript">
+$('#submit-message').on('click',function(e){
+        e.preventDefault();
+        $(".loader").show();
+          $.ajax({
+           type: "POST",
+           url: "engine/message-process.php",
+           data:  $("#form-message").serialize(),
+           cache:false,
+           contentType: "application/x-www-form-urlencoded",
+           success: function(response) {
+           $(".loader").hide();
+           if (response==1) {
+            swal({
+            text:"Message sent",
+             icon:"success",
+            });
+                
+            $("#popup").hide(1000);
+            $("#form-message")[0].reset(); 
+         
+                                                        }    
+            else{
+            
+              swal({ icon:"error",
+              	     text:response
+              });
+           
+
+           }
+
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+
+                console.log(errorThrown);
+
+            }
+
+        })
+
+    });
+</script>
+
+<script>
+
+   function payForm() {
+
+var popup = document.getElementById('popPay');
+popup.classList.toggle('active');
+}
 
 </script>
 

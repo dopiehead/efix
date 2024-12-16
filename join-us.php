@@ -15,11 +15,11 @@
 	
               <div class=" row">
 
-                 <div class="col-md-4">
+                 <div class="col-md-6">
     
                       <div id="service_provider">
            
-                         <input type="radio" id="user" value="register.php" name="user">
+                         <input class='d-flex justify-content-flex-end' type="radio" id="user" value="register.php" name="user">
     
                          <img src="assets/icons/carbon_service-id.png">
     
@@ -31,7 +31,7 @@
     
                  </div>
 
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
     
                      <div id="vendor">
 
@@ -46,19 +46,21 @@
 
                                <br>
 
-                </div>
+                </div> -->
     
     
     
-                 <div class="col-md-4">
+                 <div class="col-md-6">
     
-                      <div id="buyer">
+                      <div class='py-4' id="buyer">
     
-                          <input type="radio" value="register-user.php" id="user" name="user">
+                          <input  class='d-flex justify-content-flex-end' type="radio" value="register-user.php" id="user" name="user">
     
                           <img src="assets/icons/icons8_buy.png">
     
                            <p>I’m here to buy or get service provider</p>
+                           
+                           <br>
     
                      </div>
     

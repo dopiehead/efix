@@ -1,5 +1,5 @@
 <?php 
-
+require 'engine/config.php';
 if(isset($_GET['work']) && !empty($_GET['work'])){
     $work = $_GET['work'];
 }
@@ -27,217 +27,65 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
   <?php include 'components/banner.php'; ?>
 
   <br><br>
+      
+   <?php 
+    
+     $service_providers = mysqli_query($conn,"SELECT  *  FROM service_providers"); ?>
+   
 
- 
+
      <div class='bg-blue px-3 py-5'>
+     
+     <?php 
 
-             <div class='bg-white card border-0'>
+     while($row = mysqli_fetch_assoc($service_providers)){
+         $status = $row['status'];
+         $sp_id = $row['sp_id'];
+         $sp_name = $row['sp_name'];
+         $sp_img = $row['sp_img'];
+         $sp_category = $row['sp_category'];
+         $sp_speciality = $row['sp_speciality'];
+         $sp_location = $row['sp_location'];
+         $sp_bio = $row['sp_bio']; 
+
+         ?>
+
+             <div class='bg-white card border-0 w-100'>
             
                 <div class='service_provider_card mb-4'>
                  
-                    <span class='bg-success text-white px-2 rounded rounded-pill text-sm'>Available</span>
+                    <span class='bg-success text-white px-2 rounded rounded-pill text-sm'><?php if($status == 0){echo "offline";} else{echo "Available";}?></span>
                     <span>23km</span>
 
                 </div>
 
                 <div class='text-center'>
 
-                <img src="assets/img/wade.jpg" class=" rounded rounded-circle" alt="">
+                <img src="<?php echo"efix/" .$sp_img ?>" class=" rounded rounded-circle" alt="">
 
-                    <h5 class='text-dark fw-bold mt-3'>Wade Wilson</h5>
-                    <p class='text-secondary text-capitalize'>Plumber</p>
-                    <p class='text-primary text-capitalize'>123 Main St, City, State 12345</p>
-                    <p class='text-secondary text-sm'>Wade is a 32 year old plumber with an impressive experience behind him</p>
+                    <h5 class='text-dark fw-bold mt-3'><?php echo $sp_name ?></h5>
+                    <p class='text-secondary text-capitalize'><?php echo htmlspecialchars($sp_speciality) ?></p>
+                    <p class='text-primary text-capitalize'><?php echo htmlspecialchars($sp_location); ?></p>
+                    <p class='text-secondary text-sm'><?php echo htmlspecialchars($sp_bio); ?></p>
 
                     <hr>
 
-                    <a class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
+                    <a href='service-provider-details.php?id=<?php echo htmlspecialchars($sp_id); ?>' class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
                 </div>
            
 
              </div>
 
+     <?php  
 
-     
+        }
 
+      ?>  
 
-         <div>
+      </div>
 
+</div>
 
-
-
-         <div class='bg-white card border-0'>
-            
-            <div class='service_provider_card mb-4'>
-             
-                <span class='bg-primary text-white px-2 rounded rounded-pill text-sm'>Busy</span>
-                <span>35km</span>
-
-            </div>
-
-            <div class='text-center'>
-
-            <img src="assets/img/54.jpg" class=" rounded rounded-circle" alt="">
-
-                <h5 class='text-dark fw-bold mt-3'>Seun Ademusa</h5>
-                <p class='text-secondary text-capitalize'>Plumber</p>
-                <p class='text-primary text-capitalize'>123 Main St, City, State 12345</p>
-                <p class='text-secondary text-sm'>Wade is a 26 year old plumber with an impressive experience behind him</p>
-
-                <hr>
-
-                <a class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
-
-            </div>
-
-
-         </div>
-
-
-         </div>
-
-
-
-
-
-           <div>
-
-           <div class='bg-white card border-0'>
-            
-            <div class='service_provider_card mb-4'>
-             
-                <span class='bg-success text-white px-2 rounded rounded-pill text-sm'>Available</span>
-                <span>41km</span>
-
-            </div>
-
-            <div class='text-center'>
-
-            <img src="assets/img/plummer.jpg" class=" rounded rounded-circle" alt="">
-
-                <h5 class='text-dark fw-bold mt-3'>Kayode Stone</h5>
-                <p class='text-secondary text-capitalize'>Plumber</p>
-                <p class='text-primary text-capitalize'>123 Main St, City, State 12345</p>
-                <p class='text-secondary text-sm'>Wade is a 32 year old plumber with an impressive experience behind him</p>
-
-                <hr>
-
-                <a class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
-            </div>
-       
-
-         </div>
-
-           </div>
-
-           <div>
-
-           <div class='bg-white card border-0'>
-            
-            <div class='service_provider_card mb-4'>
-             
-                <span class='bg-success text-white px-2 rounded rounded-pill text-sm'>Available</span>
-                <span>52km</span>
-
-            </div>
-
-            <div class='text-center'>
-
-            <img src="assets/img/guy.jpg" class=" rounded rounded-circle" alt="">
-
-                <h5 class='text-dark fw-bold mt-3'>Toba Habeeb</h5>
-                <p class='text-secondary text-capitalize'>Plumber</p>
-                <p class='text-primary text-capitalize'>123 Main St, City, State 12345</p>
-                <p class='text-secondary text-sm'>Wade is a 32 year old plumber with an impressive experience behind him</p>
-
-                <hr>
-
-                <a class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
-            </div>
-       
-
-         </div>
-
-           </div>
-
-           <div>
-
-           <div class='bg-white card border-0'>
-            
-            <div class='service_provider_card mb-4'>
-             
-                <span class='bg-success text-white px-2 rounded rounded-pill text-sm'>Available</span>
-                <span>56km</span>
-
-            </div>
-
-            <div class='text-center'>
-
-            <img src="assets/img/woman.jpg" class=" rounded rounded-circle" alt="">
-
-                <h5 class='text-dark fw-bold mt-3'>Kathy Joan</h5>
-                <p class='text-secondary text-capitalize'>Plumber</p>
-                <p class='text-primary text-capitalize'>123 Main St, City, State 12345</p>
-                <p class='text-secondary text-sm'>Wade is a 32 year old plumber with an impressive experience behind him</p>
-
-                <hr>
-
-                <a class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
-            </div>
-       
-
-         </div>
-
-                 
-
-
-
-           </div>
-
-
-
-
-
-
-           
-
-
-           <div>
-
-           <div class='bg-white card border-0'>
-            
-            <div class='service_provider_card mb-4'>
-             
-                <span class='bg-danger text-white px-2 rounded rounded-pill text-sm'>Not Available</span>
-                <span>60km</span>
-
-            </div>
-
-            <div class='text-center'>
-
-            <img src="assets/img/john.jpg" class=" rounded rounded-circle" alt="">
-
-                <h5 class='text-dark fw-bold mt-3'>Ameen Oluwole</h5>
-                <p class='text-secondary text-capitalize'>Plumber</p>
-                <p class='text-primary text-capitalize'>123 Main St, City, State 12345</p>
-                <p class='text-secondary text-sm'>Wade is a 32 year old plumber with an impressive experience behind him</p>
-
-                <hr>
-
-                <a href='service-provider-details.php' class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
-            </div>
-       
-
-         </div>
-
-                 
-
-
-
-           </div>
-
-
-     </div>
                
      <div class="text-center text-dark pagination">
                
