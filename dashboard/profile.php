@@ -133,7 +133,7 @@ elseif(isset($_SESSION['email'])){
 <small></small><br>
 <small>Dial code +234</small><br>
 
-
+<small> <?php echo$user_email ?></small><br>
 <small> <?php echo$user_phone ?></small><br>
 <?php if(!empty($user_phone1)){?> 
 <small><?php $user_phone1 ?></small><br>
@@ -147,7 +147,7 @@ elseif(isset($_SESSION['email'])){
 
 <form class='mt-3' id="editpage-form" method="post">
 
-<input type="hidden" name="id">
+<input type="hidden" name="id" value="<?php echo $user_id ?>">
 <input type="file" name="fileupload"><br><br>
 <input type="submit" name="submit" id="submit" value="Change photo" class="btn btn-success " style="color: white;"><br>
 

@@ -22,6 +22,7 @@
     $bank_name = mysqli_real_escape_string($conn, 0);
     $account_number = mysqli_real_escape_string($conn, 0);
     $pay = mysqli_real_escape_string($conn, 0);
+    $status = mysqli_real_escape_string($conn, 0);
 
     
     // Check password match
@@ -99,12 +100,12 @@
         $config = mysqli_query($conn, "INSERT INTO service_providers (
             sp_name, sp_img, sp_category, sp_speciality, sp_location, sp_email, sp_password, 
             sp_phonenumber1, sp_phonenumber2, pricing, sp_experience, sp_bio, ratings, views, 
-            sp_verified, e_verify, bank_name, account_number, pay, vkey, date) 
+            sp_verified, e_verify, bank_name, account_number, pay, status, vkey, date) 
             VALUES (
             '".$sp_name."','".$sp_img."','".$sp_category."','".$sp_speciality."','".$sp_location."','".$sp_email."',
             '".$secret_password."','".$sp_phonenumber1."','".$sp_phonenumber1."','".$pricing."','".$sp_experience."',
             '".$sp_bio."','".$ratings."','".$views."','".$sp_verified."','".$e_verify."','".$bank_name."','".$account_number."',
-            '".$pay."','".$vkey."','".$date."')");
+            '".$pay."','".$status."','".$vkey."','".$date."')");
 
             if($config){
                 echo"1";
