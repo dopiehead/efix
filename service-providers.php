@@ -224,7 +224,7 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
 
                 <hr>
 
-                <a class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
+                <a href='service-provider-details.php' class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
             </div>
        
 

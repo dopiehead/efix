@@ -1,3 +1,18 @@
+<?php session_start(); 
+ 
+ error_reporting(E_ALL ^ E_NOTICE);
+ require 'engine/config.php'; 
+
+if(isset($_POST["submit"]))   {  
+    if(!empty($_POST["search"]))   {  
+    $query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
+    header("location:search-process.php?search=" .$query); 
+   }  
+
+ }  
+ ?> 
+
+<?php { ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +30,7 @@
 <div class='nav'>
 
      <div>
+
           <img src='assets/img/logo.png'>
          
      </div>
@@ -22,9 +38,14 @@
 
       <div class='search-bar'>
 
-           <input type="text" class='bg-white rounded rounded-pill border-0 py-2'> <button class='btn btn-dark text-white rounded rounded-pill text-sm'>Search</button>
+           <form method='post' action="">
 
+                 <input type="text" name='search' placeholder="Search for service providers" class='bg-white rounded rounded-pill border-0 py-2 px-1'>
+                 <button name='submit' class='btn btn-dark text-white rounded rounded-pill'>Search</button>
+
+           </form>
       </div>
+
 
 
 
@@ -40,20 +61,11 @@
 
      </ul>
 
-
-
-
-
-
-
-
-
-
-     <div class='create-container fw-bold'>
+     <div class='create-container'>
        
-      <span><a class='px-2 py-1  border-warning' href='login.php'>Login</a></span>
+      <span><a class='px-2 py-1 login-button rounded ' href='login.php'>Login</a></span>
 
-      <span><a class=' bg-warning rounded rounded-pill px-2 py-1' href='sign-up.php'>Sign up</a></span>
+      <span><a class=' bg-warning text-white rounded px-2 py-1' href='sign-up.php'>Sign up</a></span>
 
      </div>
 
@@ -76,15 +88,21 @@
 
 <div id="myform" class="overlay overlayParent">
 
-<div class="overlay-content">
+    <div class="overlay-content">
 
-<a href='service_providers.php' class='text-white'>Service providers</a>
+         <a href='service_providers.php' class='text-white'>Service providers</a>
 
-<a class='text-white' href='charges.php'>Call out charges</a>
+         <a class='text-white' href='charges.php'>Call out charges</a>
 
-<a class='text-white' href='profile.php'>Sell a product</a>  
-  
-</div>
+         <a class='text-white' href='profile.php'>Sell a product</a>  
+
+              
+          <a class='text-white fw-bold' href='login.php'>Login</a>
+ 
+        <a class='text-white' href="join-us.php"><span class=' rounded rounded-pill px-3 py-1 bg-danger w-75 fw-bold'>Sign up</span></a>
+ 
+     </div>
+
 </div>
 
 <!-- end of header/navigation -->
@@ -102,9 +120,9 @@
 
               <div class='button-container'>
             
-                  <a class='rounded rounded-pill px-2 py-1 fw-bold  text-center'>Book now</a>
+                  <a href='service-providers.php' class='rounded rounded-pill px-2 py-1 fw-bold  text-center'>Book now</a>
 
-                 <a class='rounded rounded-pill px-2 py-1 fw-bold  text-center'>Read more</a>
+                 <a href='about.php' class='rounded rounded-pill btn-read px-2 py-1 text-secondary  text-center'>Read more</a>
         
              </div>
 
@@ -420,7 +438,7 @@
 
    <span class='text-center'>Schedule your service with us today and experience quality handyman solutions</span>
     
-   <span><a class='btn btn-light fw-bold text-warning rounded' href="">Book now <i class='fa fa-chevron-right'></i></a></span>
+   <span><a href='service-providers.php' class='btn btn-light fw-bold text-warning rounded' href="">Book now <i class='fa fa-chevron-right'></i></a></span>
 
  </div>
 
@@ -441,18 +459,18 @@
 
                       <div class='jumbotron'>
                        
-                          <form>
+                          <form id='formquote'>
 
                              <div class='d-flex g-5 flex-md-row flex-column'>
                                 
                                  <div class='d-flex flex-row flex-column'>
                                      <label for="full name">Full name</label>
-                                     <input type="text" placeholder="Full name" class='border-0'>
+                                     <input type="text" name='fullname' placeholder="Full name" class='border-0'>
                                  </div>
 
                                  <div class='d-flex flex-row flex-column'>
                                      <label for="email">Email</label>
-                                     <input type="email" placeholder="Enter email address" class='border-0'>
+                                     <input type="email" name='email' placeholder="Enter email address" class='border-0 w-100'>
                                  </div>
 
                              </div>
@@ -462,12 +480,12 @@
                              <div class='d-flex g-5 flex-md-row flex-column'>
                                  <div  class='d-flex flex-row flex-column'>
                                      <label for="telephone">Telephone</label>
-                                     <input type="number" placeholder="Enter phone number" class='border-0' min='0' min-length='11'>
+                                     <input type="number" name='telephone' placeholder="Enter phone number" class='border-0' min='0' min-length='11'>
                                  </div>
 
                                  <div  class='d-flex flex-row flex-column'>
                                      <label for="date">Date</label>
-                                     <input type="date" placeholder='Select date' class='border-0 px-4' >
+                                     <input type="date" name='date' placeholder='Select date' class='border-0 px-4' >
                                  </div>
 
                              </div>
@@ -479,14 +497,14 @@
 
                                  <div class='d-flex flex-row flex-column g-3'>
                                      <label for="date">Address</label>
-                                     <textarea placeholder='Input an address' rows='5' class='border-0 text-sm'></textarea>
+                                     <textarea placeholder='Input an address' name='address' rows='4' class='border-0 text-sm'></textarea>
                                  </div>
 
                              </div>
 
                              <br>
 
-                             <button class='btn btn-warning text-white text-sm'>Get a Quote  <i class='fa fa-chevron-right'></i></button>
+                             <button id='btn-quote' class='btn btn-quote btn-warning text-white text-sm'>Get a Quote  <i class='fa fa-chevron-right'></i></button>
                             
 
                            </form>
@@ -543,7 +561,7 @@
 
  </div>
 
-
+<?php } ?>
 
  
 <!------------------------------------------btn-scroll--------------------------------------------------->
@@ -573,32 +591,19 @@ var nextButton = document.querySelector('.next-button');
 
 
 if (prevButton && nextButton) {
-  prevButton.addEventListener('click', function() {
-    flickity.previous();
+       prevButton.addEventListener('click', function() {
+        flickity.previous();
   });
 
   nextButton.addEventListener('click', function() {
-    flickity.next(); 
+       flickity.next(); 
   });
 }
 </script>
 
 
-<!-- <script>
-
-      function openform() {
-          document.getElementById("myform").
-          style.width="49%";
-     }  
-
-     function closeform() {
-          document.getElementById("myform").
-         style.widtht="0%";
-     }
 
 
-
-</script> -->
 
 <script>
 
@@ -606,13 +611,48 @@ if (prevButton && nextButton) {
 
               $(this).toggleClass("close");
 
-         $("#myform").toggleClass("overlayParent");
+             $("#myform").toggleClass("overlayParent");
 
          });
 
 </script>
 
 
-    
+<script>
+    $("#btn-quote").click(function(e) {
+        e.preventDefault();
+        var formquote = $("#formquote").serialize();
+
+        $.ajax({
+            url: "engine/get-quote.php",
+            type: "post",
+            data: formquote,
+            success: function(response) {
+                if (response == 1) {
+                    swal({
+                        title: "Success",
+                        text: "Quote will be sent shortly",
+                        icon: "fa-envelope-o",
+                    });
+                } else {
+                    swal({
+                        title: "Notice",
+                        text: response,
+                        icon: "warning",
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                swal({
+                    title: "Error",
+                    text: "An unexpected error occurred.",
+                    icon: "error",
+                });
+            }
+        });
+    });
+</script>
+
+
 </body>
 </html>

@@ -21,6 +21,38 @@ require ('config.php');
         exit;
     }
 
+    elseif(empty($user_name.$user_email.$user_password.$user_phone.$user_location)){
+        echo "All fields are required.";
+    }
+
+
+    elseif($user_name ==""){
+        echo "User name is required.";
+    }
+
+
+    elseif($user_password ==""){
+        echo "User password is required.";
+    }
+
+   
+    
+    elseif($user_email ==""){
+        echo "User password is required.";
+    }
+
+
+    elseif($user_phone ==""){
+        echo "Phone number is required.";
+    }
+
+
+    elseif(filter_var($user_email,FILTER_VALIDATE_EMAIL)){
+        echo "Email format is not valid.";  
+    }
+
+    else{
+
     $sql = "INSERT INTO user_profile (
 user_name,
 user_email,
@@ -47,5 +79,7 @@ joined_date)  VALUES (
 
             echo "Database insertion failed: " . mysqli_error($conn);
         }
+
+    }
 
 ?>

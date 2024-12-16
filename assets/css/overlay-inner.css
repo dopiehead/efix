@@ -4,6 +4,14 @@
     height:auto;
 }
 
+@media screen and (max-width:768px) {
+    
+    
+.logo-container img{
+    width:120px;
+    height:auto;
+}
+}
 
 
 
@@ -126,7 +134,7 @@
        }
 
 
-    .search_container .btn-info{
+    .search_container .btn-secondary{
 
           margin-left:-78px;
           position: relative;

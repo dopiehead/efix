@@ -24,8 +24,8 @@
 
      <div class="search_container">
 
-      <input type="search" placeholder="Search for brand, product and categories" class='rounded rounded-pill px-1'>
-      <button class="btn btn-info rounded rounded-pill">Search</button>
+      <input type="search" placeholder="Search for service providers" class='rounded rounded-pill px-1'>
+      <button class="btn rounded btn-secondary rounded-pill">Search</button>
 
 
 

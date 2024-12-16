@@ -12,7 +12,7 @@
 
          <div style='margin-top:-20px;cursor:pointer;' class='position-absolute px-4 d-flex flex-row flex-column'>
 
-               <a href='index.php' class='text-white logo mt-5'>LOGO</a>
+               <a href='index.php' class='text-white logo mt-5'><img src="assets/img/logo.png" alt="efix"></a>
 
                <a onclick='history.go(-1)' class='fw-bold text-white mt-4' ><i class='fa fa-chevron-left'></i></a>
          </div>

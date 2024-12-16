@@ -5,6 +5,14 @@
      
 }
 
+
+.bg-login .logo img{
+
+  height: auto;
+  width: 150px;
+
+}
+
 @media screen  and (max-width:768px) {
 
   .bg-login .logo{
