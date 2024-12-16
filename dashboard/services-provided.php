@@ -107,9 +107,7 @@ elseif(isset($_SESSION['email'])){
 
                    </div>
 
-
               </div>
-
 
               <div class="container">
 
