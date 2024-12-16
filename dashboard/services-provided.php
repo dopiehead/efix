@@ -1,3 +1,61 @@
+<?php session_start();
+
+require('../engine/config.php');
+
+if(isset($_SESSION['sp_email'])){
+
+     $sp_email = $_SESSION['sp_email'];
+     $get_user = mysqli_query($conn, "SELECT * FROM service_providers WHERE sp_email = '". $sp_email."' and sp_verified = 1");
+     if($get_user->num_rows>0){ 
+         while($row = mysqli_fetch_array($get_user)){
+              $user_id = $row["sp_id"];
+              $user_name = $row["sp_name"];
+              $user_email = $row["sp_email"];
+              $user_img = $row["sp_img"];
+              $user_phone = $row["sp_phonenumber1"];
+              $user_phone1 = $row["sp_phonenumber2"];
+              $user_location = $row["sp_location"];
+              $user_experience = $row["sp_experience"];
+              $user_bio = $row["sp_bio"];
+
+          }
+
+      }
+
+    }
+
+
+    
+elseif(isset($_SESSION['email'])){
+
+    $email = $_SESSION['email'];
+    $get_user = mysqli_query($conn, "SELECT * FROM user_profile WHERE user_email = '". $email."' and verified = 1");
+    if($get_user->num_rows>0){ 
+        while($row = mysqli_fetch_array($get_user)){
+             $user_id = $row["id"];
+             $user_name = $row["user_name"];
+             $user_email = $row["user_email"];
+             $user_img = $row["user_image"];
+             $user_phone = $row["user_phone"];            
+             $user_location = $row["user_location"];
+        
+
+         }
+
+     }
+
+   }
+
+
+   else{
+    header("location:../login.php");
+    exit(); 
+   }
+
+?>
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,7 +100,7 @@
                        <span class='bg-light text-dark'><i class='fa fa-search'></i></span>
                        <span class='bg-light text-dark'><i class='fa fa-bell'></i></span>
                          <div class='bg-light rounded rounded-pill d-flex g-5 px-3 '>
-                             <img src="../assets/img/profile.jpg" class='rounded rounded-circle' alt="">
+                             <img src="<?php echo$user_img;?>" class='rounded rounded-circle' alt="">
                              
                                      <a class='d-flex align-items-center text-dark text-decoration-none'><i class='fa fa-caret-down'></i></a>                      
                          </div>

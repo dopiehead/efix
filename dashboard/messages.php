@@ -86,7 +86,7 @@ elseif(isset($_SESSION['email'])){
                          <span class='bg-light text-dark'><i class='fa fa-search'></i></span>
                          <span class='bg-light text-dark'><i class='fa fa-bell'></i></span>
                          <div class='bg-light rounded rounded-pill d-flex g-5 px-3 '>
-                             <img src="../assets/img/profile.jpg" class='rounded rounded-circle' alt="">
+                             <img src="<?php echo $user_img; ?>" class='rounded rounded-circle' alt="">
                              
                                      <a class='d-flex align-items-center text-dark text-decoration-none'><i class='fa fa-caret-down'></i></a>                      
                          </div>
