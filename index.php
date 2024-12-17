@@ -63,9 +63,17 @@ if(isset($_POST["submit"]))   {
 
      <div class='create-container'>
        
+     <?php if(isset($_SESSION['id']) || isset($_SESSION['sp_id'])) { ?> 
+
+     <span><a class='px-2 py-1 login-button rounded ' href='dashboard/profile.php'><i class='fa fa-user-alt'></i></a></span>
+
+     <?php } else {?>
+
       <span><a class='px-2 py-1 login-button rounded ' href='login.php'>Login</a></span>
 
       <span><a class=' bg-warning text-white rounded px-2 py-1' href='sign-up.php'>Sign up</a></span>
+
+      <?php } ?>
 
      </div>
 
@@ -96,11 +104,16 @@ if(isset($_POST["submit"]))   {
 
          <a class='text-white' href='profile.php'>Sell a product</a>  
 
-              
+           <?php if(isset($_SESSION['id']) || isset($_SESSION['sp_id'])) { ?>
+
+            <a class='text-white fw-bold' href='dashboard/profile.php'><i class='fa fa-user-alt'></i></a>  
+
+            <?php } else { ?>
+
           <a class='text-white fw-bold' href='login.php'>Login</a>
  
-        <a class='text-white' href="join-us.php"><span class=' rounded rounded-pill px-3 py-1 bg-danger w-75 fw-bold'>Sign up</span></a>
- 
+          <a class='text-white' href="join-us.php"><span class=' rounded rounded-pill px-3 py-1 bg-danger w-75 fw-bold'>Sign up</span></a>
+          <?php }  ?>
      </div>
 
 </div>

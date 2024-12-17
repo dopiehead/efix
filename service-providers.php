@@ -1,7 +1,8 @@
-<?php 
+<?php  session_start();
 require 'engine/config.php';
 if(isset($_GET['work']) && !empty($_GET['work'])){
     $work = $_GET['work'];
+    
 }
 
 ?>
@@ -29,8 +30,36 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
   <br><br>
       
    <?php 
-    
-     $service_providers = mysqli_query($conn,"SELECT  *  FROM service_providers"); ?>
+
+      $num_per_page = 20;
+
+      $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+
+      $initial_page = ($page - 1) * $num_per_page;
+
+      $condition ="SELECT  *  FROM  service_providers";
+
+      $total_sql = mysqli_query($conn,"SELECT COUNT(*) AS total FROM service_providers");
+
+      $total_records = $total_sql->num_rows;
+
+      $total_num_page = ceil($total_records / $num_per_page);
+
+     if(isset($work) || !empty($work)){
+       
+         $condition .= " WHERE sp_category like '%".$work."%' OR sp_speciality like '%".$work."%'";
+     }
+
+     $condition .= " LIMIT $initial_page, $num_per_page";
+
+     $service_providers = mysqli_query($conn,$condition);
+
+     if( $service_providers->num_rows<1){
+
+           echo "No service provider found";
+     }
+     
+     ?>
    
 
 
@@ -54,8 +83,8 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
             
                 <div class='service_provider_card mb-4'>
                  
-                    <span class='bg-success text-white px-2 rounded rounded-pill text-sm'><?php if($status == 0){echo "offline";} else{echo "Available";}?></span>
-                    <span>23km</span>
+                     <span class='bg-success text-white px-2 rounded rounded-pill text-sm'><?php if($status == 0){echo "offline";} else{echo "Available";}?></span>
+                     <span>23km</span>
 
                 </div>
 
@@ -63,14 +92,14 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
 
                 <img src="<?php echo"efix/" .$sp_img ?>" class=" rounded rounded-circle" alt="">
 
-                    <h5 class='text-dark fw-bold mt-3'><?php echo $sp_name ?></h5>
-                    <p class='text-secondary text-capitalize'><?php echo htmlspecialchars($sp_speciality) ?></p>
-                    <p class='text-primary text-capitalize'><?php echo htmlspecialchars($sp_location); ?></p>
-                    <p class='text-secondary text-sm'><?php echo htmlspecialchars($sp_bio); ?></p>
+                     <h5 class='text-dark fw-bold mt-3'><?php echo $sp_name ?></h5>
+                     <p class='text-secondary text-capitalize'><?php echo htmlspecialchars($sp_speciality) ?></p>
+                     <p class='text-primary text-capitalize'><?php echo htmlspecialchars($sp_location); ?></p>
+                     <p class='text-secondary text-sm'><?php echo htmlspecialchars($sp_bio); ?></p>
 
                     <hr>
 
-                    <a href='service-provider-details.php?id=<?php echo htmlspecialchars($sp_id); ?>' class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
+                     <a href='service-provider-details.php?id=<?php echo htmlspecialchars($sp_id); ?>' class='text-dark fw-bold mt-4'>VIEW PROFILE</a>
                 </div>
            
 
@@ -87,13 +116,32 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
 </div>
 
                
-     <div class="text-center text-dark pagination">
+     <div class="container text-center text-dark pagination">
                
-               <?php
-                    for ($i = 1; $i <= 10; $i++) {
-                         echo "<a id='".$i."' class='btn btn-pagination'>".$i ."<a>";
-                   }
-               ?>
+     <?php
+           $radius = 3; // Number of pages to display around the current page
+           echo "<br>";
+           if ($page > 1) {
+               $previous = $page - 1;
+               echo '<span id="page_num"><a href="service-providers.php?page='.$previous.'"  class="btn-success prev" id="' . $previous . '">&lt;</a></span>';
+             }
+           for ($i = 1; $i <= $total_num_page; $i++) {
+                  if (($i >= 1 && $i <= $radius) || ($i > $page - $radius && $i < $page + $radius) || ($i <= $total_num_page && $i > $total_num_page - $radius)) {
+                      if ($i == $page) {
+                             echo '<span id="page_num"><a href="service-providers.php?page='.$i.'" class="btn-success active-button" id="' . $i . '">' . $i . '</a></span>';
+                        } else {
+                              echo '<span id="page_num"><a href="service-providers.php?page='.$i.'" class="btn-success" id="' . $i . '">' . $i . '</a></span>';
+        }
+    } elseif ($i == $page - $radius || $i == $page + $radius) {
+        echo "... ";
+    }
+}
+if ($page < $total_num_page) {
+    $next = $page + 1;
+    echo '<span id="page_num"><a href="service-providers.php?page='.$next.'" class="btn-success next" id="' . $next . '">&gt;</a></span>';
+}
+?>
+
       
       
                </div>
