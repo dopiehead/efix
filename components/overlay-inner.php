@@ -37,8 +37,12 @@
          <div class='nav_icons'>
 
              <a href='dashboard/liked-item.php' class='text-dark'><i class='fa fa-heart'></i></a>
+
+             <?php if(isset($_SESSION['id']) || isset($_SESSION['sp_id'])) { ?>
              
              <a href='dashboard/profile.php' class='text-dark'><i class='fa fa-user-alt'></i></a>
+
+             <?php } ?>
 
              <!-- <a href='cart.php' class='text-dark'><i class='fa fa-shopping-cart'></i></a> -->
 
@@ -50,11 +54,7 @@
 
          <div class='log-icons'>
                
-               <?php if(isset($_SESSION['id']) || isset($_SESSION['sp_id'])){ ?>
-
-               <a class='text-dark' href="profile.php">Profile</a>
-
-               <?php }  else { ?>
+               <?php if(!isset($_SESSION['id']) || !isset($_SESSION['sp_id'])){ ?>
 
               <a class='text-dark' href="login.php">Login</a>
 
