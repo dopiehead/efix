@@ -315,7 +315,13 @@ if (isset($_SESSION["sp_id"])) {
 
            <div>
             
-                <img src="assets/img/images.jpg" alt="">
+           <iframe
+              src="https://www.google.com/maps?q=<?php echo urlencode($sp_location); ?>&output=embed"
+              class="w-100 h-auto"
+             style="border:0;"
+             allowfullscreen=""
+             loading="lazy">
+          </iframe>
 
 
            </div>
@@ -396,7 +402,9 @@ if (isset($_SESSION["sp_id"])) {
 
                <div class="sp_package">
 
-                  <img src="assets/img/Rectangle1.png" alt="">
+               
+
+               <a href='service-providers.php?work=panel beater'> <img src="assets/img/Rectangle1.png" alt=""></a>
 
                   <h6 class='fw-bold'>Panel Beater</h6>
 
@@ -412,7 +420,7 @@ if (isset($_SESSION["sp_id"])) {
 
                <div class="sp_package">
 
-                   <img src="assets/img/Rectangle2.png" alt="">
+               <a href='service-providers.php?work=electrician'><img src="assets/img/Rectangle2.png" alt="electrician"></a>
 
                    <h6 class='fw-bold'>Electrician</h6>
 
@@ -428,7 +436,7 @@ if (isset($_SESSION["sp_id"])) {
 
                <div class="sp_package">
 
-                   <img src="assets/img/Rectangle3.png" alt="">
+               <a href='service-providers.php?work=vulcanizer'><img src="assets/img/Rectangle3.png" alt=""></a>
 
                    <h6 class='fw-bold'>Vulcanizer</h6>
 
@@ -444,7 +452,7 @@ if (isset($_SESSION["sp_id"])) {
 
               <div class="sp_package">
 
-                    <img src="assets/img/Rectangle4.png" alt="">
+              <a href='service-providers.php?work=plumber'><img src="assets/img/Rectangle4.png" alt="efix"></a>
 
                     <h6 class='fw-bold'>Plumber</h6>
 
@@ -459,7 +467,7 @@ if (isset($_SESSION["sp_id"])) {
 
               <div class="sp_package">
 
-                       <img src="assets/img/Rectangle2.png" alt="">
+              <a href='service-providers.php?work=mechanic'><img src="assets/img/Rectangle2.png" alt="efix"></a>
 
                      <h6 class='fw-bold'>Mechanic</h6>
 

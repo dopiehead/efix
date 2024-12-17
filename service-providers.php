@@ -21,7 +21,7 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
     
  <div class="container">
 
- <h6 class="mt-4 fw-bold"><?php if(!empty($work)) {echo $work;} ?> services around you</h6>
+ <h6 class="mt-4 fw-bold "><span class='text-capitalize'><?php if(!empty($work)) {echo $work;} ?></span> services around you</h6>
 
   <br><br>
 

@@ -1,14 +1,15 @@
 <?php session_start();
 
+require 'engine/config.php';
+
 if (isset($_SESSION['id'])) {
 $user_id = 	$_SESSION['id'];
 }
 
-
 if (isset($_SESSION['sp_id'])) {
 $user_id = 	$_SESSION['sp_id'];
 }
-require 'engine/configure.php';
+
 if (isset($_POST['id'])) {
 $id= $_POST['id'];
 $sql = "SELECT * FROM service_providers where sp_id ='".htmlspecialchars($id)."'";
