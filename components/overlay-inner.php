@@ -50,12 +50,17 @@
 
          <div class='log-icons'>
                
+               <?php if(isset($_SESSION['id']) || isset($_SESSION['sp_id'])){ ?>
+
+               <a class='text-dark' href="profile.php">Profile</a>
+
+               <?php }  else { ?>
 
               <a class='text-dark' href="login.php">Login</a>
 
               <a class="text-dark border-left border-2 border-primary pl-2" href="join-us.php">Register</a>
 
-
+               <?php } ?>
 
          </div>
 

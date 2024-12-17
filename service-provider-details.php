@@ -1,6 +1,6 @@
-<?php session_start();
- require 'engine/config.php'; 
-
+<?php session_start(); ?>
+ <?php require 'engine/config.php'; 
+$userId=null;
 if(isset($_POST["submit"]))   {  
 if(!empty($_POST["search"]))   {  
 $query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
@@ -8,31 +8,28 @@ header("location:search-process.php?search=" .htmlspecialchars($query));
  }  
 }  
 
- ?> 
-
-<?php
 if (isset($_GET['id'])) {
-$id = mysqli_escape_string($conn,$_GET['id']);
-$service_provider = mysqli_query($conn,"SELECT * from service_providers where sp_id ='$id'");
-$sql =  mysqli_query($conn,"UPDATE service_providers SET views = views +1 where sp_id ='$id'");
-while ($row = mysqli_fetch_array($service_provider)) {
-$sp_id =  $row['sp_id'];
-$sp_img = $row['sp_img'];
-$sp_speciality = $row['sp_speciality'];
-$sp_category = $row['sp_category'];
-$sp_name = $row['sp_name']; 
-$sp_location = $row['sp_location'];
-$sp_experience = $row['sp_experience']; 
-$sp_bio = $row['sp_bio']; 
-$sp_ratings = $row['ratings']; 
-$sp_verified = $row['sp_verified'];
-$sp_email = $row['sp_email'];
-$sp_phone1 = $row['sp_phonenumber1'];
-$sp_phone2 = $row['sp_phonenumber2'];
-$sp_price = $row['pricing'];
-$bank_name = $row['bank_name'];
-$pay = $row['pay'];
-$account_number = $row['account_number'];
+       $id = mysqli_escape_string($conn,$_GET['id']);
+       $service_provider = mysqli_query($conn,"SELECT * from service_providers where sp_id ='$id'");
+       $sql =  mysqli_query($conn,"UPDATE service_providers SET views = views +1 where sp_id ='$id'");
+       while ($row = mysqli_fetch_array($service_provider)) {
+            $sp_id =  $row['sp_id'];
+            $sp_img = $row['sp_img'];
+            $sp_speciality = $row['sp_speciality'];
+            $sp_category = $row['sp_category'];
+            $sp_name = $row['sp_name']; 
+            $sp_location = $row['sp_location'];
+            $sp_experience = $row['sp_experience']; 
+            $sp_bio = $row['sp_bio']; 
+            $sp_ratings = $row['ratings']; 
+            $sp_verified = $row['sp_verified'];
+            $sp_email = $row['sp_email'];
+            $sp_phone1 = $row['sp_phonenumber1'];
+            $sp_phone2 = $row['sp_phonenumber2'];
+            $sp_price = $row['pricing'];
+            $bank_name = $row['bank_name'];
+            $pay = $row['pay'];
+            $account_number = $row['account_number'];
 		
 	}
 	
@@ -43,18 +40,18 @@ $account_number = $row['account_number'];
 <?php 
 
 if (isset($_SESSION["id"])) {
-$date = $_SESSION['date'];
-$userId = $_SESSION['id'];
-$username =$_SESSION['name'];
-$useremail =$_SESSION['email'];
+       $date = $_SESSION['date'];
+       $userId = $_SESSION['id'];
+       $username =$_SESSION['name'];
+       $useremail =$_SESSION['email'];
 }
 
 
 if (isset($_SESSION["sp_id"])) {
-$date = $_SESSION['sp_date'];
-$userId = $_SESSION['sp_id'];
-$username = $_SESSION['sp_name'];
-$useremail = $_SESSION['sp_email'];
+      $date = $_SESSION['sp_date'];
+      $userId = $_SESSION['sp_id'];
+      $username = $_SESSION['sp_name'];
+      $useremail = $_SESSION['sp_email'];
 
 }
 
@@ -77,6 +74,23 @@ $useremail = $_SESSION['sp_email'];
 </head>
 <body>
 <?php include 'components/overlay-inner.php'; ?>
+
+
+     <div class="popPay" id="popPay">
+
+         <a class="closePay" onclick="payForm()">&times;</a>
+  
+         <div class=' p-5 d-flex flex-row flex-column align-items-center justify-content-center'>        
+	
+           <p><b>Account Name</b> <?php echo $sp_name?></p>
+
+           <p><b>Bank Name</b> <?php echo $bank_name?></p>
+
+           <p><b>Account Number</b> <?php echo $account_number?></p>
+
+         </div> 
+
+     </div>
   
      <div class='px-3 mt-4'>
 
@@ -109,19 +123,41 @@ $useremail = $_SESSION['sp_email'];
                        <h6 class='fw-bold mt-2'>Bio</h6>
                        
                        <p class='text-sm'><?php echo $sp_bio; ?></p>
+                       <?php if($sp_price!==0){ ?>
+
+           <h6 ><b>Price</b>:</h6> <p class="p_bio"> &#9839;<?php echo $sp_price; ?> <?php echo " $". round($sp_price); ?>  per service</p>
+
+           <?php } ?>
+
+
+                 <div class='connect mt-2'>
+
+                      <?php if (!isset($userId)) {?>
+
+                           <a href="login.php?details=<?php echo $_SERVER['REQUEST_URI']; ?>" class="btn btn-success text-sm ">Login to continue</a>
+                 
+                           <?php  } else{ ?>
+
+
+                               <?php if($id != $_SESSION['sp_id']){ ?>
+
+
+                                   &nbsp;<a class="btn btn-success text-white" onclick="toggle()">Send message</a>&nbsp;
+
+
+                             <?php if($pay=='essential'){  echo"<a class='btn btn-danger btn-pay text-white'   id='{$id}'>Book</a>";}  ?>
+
+
+                  <?php if($pay =='account'){ echo'<a class="btn btn-danger text-white" onclick="payForm()">Book</a>';} ?>
+
+
+                 <?php } }?>
+
+                 <span><a class='share btn btn-info ml-1 text-white text-sm' id='https://e/sp_details.php?share =<?php echo$sp_name;?>' onclick='share()' target='_blank' rel='noopener noreferrer'><i class="fa fa-share-alt"></i> Share</a></span>
+
                       
-                    </div>
-                    <div>
+                        </div>
 
-                         <span id='<?php echo $sp_id; ?>'><i class='fa fa-share-alt'></i> Share</span>
-
-                         <div class='connect mt-2'>
-
-                            <span id='<?php echo $sp_id ?>' class='bg-primary text-white px-3 py-2 rounded border-0 form-control'>Book</span>
-
-                            <span class='text-info bg-white border-2 border border-info rounded px-3 py-2 form-control'>Send a message</span>
-
-                         </div>
 
                     </div>
              </div>
@@ -177,21 +213,67 @@ $useremail = $_SESSION['sp_email'];
       <div class="mt-5 px-2">
         
          <div class='shadow-md pl-2 w-100 py-2 px-2'>
-              <h6 class='fw-bold'>Work</h6>
-              <span><i class='fa fa-chevron-down'></i></span>
+              <h6 class='fw-bold'>Work History</h6>
+              <span onclick="collapse()"><i class='fa fa-chevron-down'></i></span>
 
          </div>
+         <div id="demo" class="active-button">
+
+             <?php
+                 if (isset($_GET['sp_id'])) {
+                    require 'engine/configure.php';
+                    $id = mysqli_escape_string($conn,$_GET['sp_id']);
+                    $service_provider = mysqli_query($conn,"SELECT * from service_providers where sp_id ='$id'");
+                    while ($row = mysqli_fetch_array($service_provider)) {
+                        $id =  $row['sp_id'];
+		
+                	   }	
+                }
+             ?>
+             <?php
+                $experience = mysqli_query($conn,"select experience from work_experience where sp_id ='".$id."' order by id desc limit 1 ");
+                if($experience->num_rows>0){
+                   while ($row = mysqli_fetch_array($experience)){
+                       echo"<br>".$row['experience']; 
+                   }
+                 }
+               else{
+                    echo"No experience yet";
+               }
+             ?>
+        </div>
   
-
-
       </div>
+
+
+      
+<!-------------------------------------------------Report provider------------------------------------------------------->
+
+ <div id="popupAbuse">
+       <div class=" px-5">
+         <a class="btn btn-danger text-danger" onclick="toggle_abuse()" id="closeAbuse">&times;</a> 
+         <h6 class="text-center" id="h6" style="">Report Box</h6><br>
+ 
+         <form style="" method="post" id="report-form" enctype="multipart/form-data"> 
+
+           <br>
+
+              <p style="text-transform: capitalize;font-weight: bold;"><?php echo$sp_name;?></p>
+              <input type="hidden" name="product_name" value="<?php echo$sp_name; ?>">
+              <input type="hidden" name="vendor_email" placeholder="&#xF1fa; Email" value="<?php echo$sp_email?>"  class="form-control" >
+              <input type="email" style="font-family:arial,fontawesome;" name="sender_email" placeholder="&#xF1fa; Email" value="<?php echo $useremail ?>"  class="form-control"><br>
+              <input type="hidden"  name="product_id" placeholder="Product Details" value="<?php echo$id; ?>"  class="form-control">
+             <textarea type="text" wrap="physical" name="issue" placeholder="Issue " rows="8" class="form-control"></textarea><br><br>
+             <input type="submit" name="submit_sp" id="submit-sp" style="color: white;" class="btn btn-warning" value="Report Abuse ">
+
+         </form>
+
+           <br>
+       </div>
+ </div>
 
       
      <!-- working hours -->
-
-     
-
-
 
       <div class="d-flex working-container px-3 mt-5">
           
@@ -243,55 +325,57 @@ $useremail = $_SESSION['sp_email'];
 
       </div>
 
-         <div>
+           <div>
 
-         <div class='fw-bold mt-5 mb-4 px-3 '>
+             <div class='fw-bold mt-5 mb-4 px-3 '>
 
                   <h5 class='fw-bold'>Reviews</h5>
                   <hr>
-         </div>
+             </div>
 
-         <div class='mt-4 px-3 reviews-container py-2 mb-4'>
+             <div class='mt-4 px-3 reviews-container py-2 mb-4'>
+   
+               <?php 
+              
+               $query = mysqli_query($conn,"select * from sp_comment where sp_id='".htmlspecialchars($id)."' order by id desc");
+               $product_comment=$query->num_rows;
+                 if ($product_comment<1) {
+                     echo "<span style='font-family: poppins;font-size:14.5px;opacity:0.6;color:black'>There are no reviews for this provider</span>";
+                 }
+                 else{
+                         while ($row = mysqli_fetch_array($query)) {?>
 
-             <div class='review-content'>
+                             <div class='review-content'>
 
-             <div>
+                                 <div>
                
-                   <span class='fw-bold'><span class='rounded rounded-circle px-2 bg-secondary text-white mr-2'>B</span>Blessing Linus</span>
+                                     <span class='fw-bold'><span class='rounded rounded-circle px-2 bg-secondary text-white mr-2'>B</span><?php echo$row['sender_name']; ?></span>
 
-                  <p>Lorem ipsum dolor sit amet consectetur. Tellus scelerisque donec elementum donec leo integer adipiscing nunc. Commodo consectetu</p>
+                                     <p><?php echo$row['comment']; ?></p>
 
-             </div>       
+                                     <br><i style='color:blue; align-self:center;font-size:14px;' >Public</i> <i style='color:red;font-size:14px;'><?php echo$row['date']; ?></i><br>
 
-              </div>
+                                 </div>       
 
+                             </div>
 
-              <div class='review-content'>
+                                   <?php   }
 
+                                    }
 
+                                   ?>
 
-
-<div>
-  
-      <span class='fw-bold'><span class='rounded rounded-circle px-2 bg-secondary text-white mr-2'>B</span>Blessing Linus</span>
-
-     <p>Lorem ipsum dolor sit amet consectetur. Tellus scelerisque donec elementum donec leo integer adipiscing nunc. Commodo consectetu</p>
-
-</div>
-
-
-
-
-
- </div>
-
-   </div>
+             </div>
 
    <br>
 
-   
-  <a class='text-info bg-white mt-4 px-3 py-2 fw-bold border border-2 border-info rounded'>Post Comment</a>
-       
+  <div class='button-container d-flex justify-content-between px-2'>   
+
+      <a onclick="toggle_abuse()" class='text-white bg-warning mt-4 px-3 py-2 fw-bold border border-2 border-0 rounded'>Report Abuse</a>
+
+     <a  onclick="toggle_comment()" class='text-info bg-white mt-4 px-3 py-2 fw-bold border border-2 border-info rounded'>Post Comment</a>
+
+  </div>    
    
           <br><br>
 
@@ -402,6 +486,39 @@ $useremail = $_SESSION['sp_email'];
 
      </div>
 
+
+<!-- modal for  posting comments -->
+     
+<div id="popup-comment">
+     <a id="close-comment" class="btn close-comment" onclick="toggle_comment()">&times;</a>
+     <h6><b>Post comment</b></h6><br>
+     <form method="post" id="conv">
+      <?php 
+      if (isset($_SESSION['sp_email'])){
+          	$sp_email = $_SESSION['sp_email']; 
+        	  $sp_name = $_SESSION['sp_name'];
+            echo'<input type="hidden" name="sender_email" maxlength="21" class="form-control" style="font-family:arial,fontawesome;font-size:13px;" placeholder="&#xF1fa; Email" value=" '.$sp_email.'"><br>';
+            echo'<input type="text" maxlength="21" name="sender_name" class="form-control" style="font-family:arial,fontawesome;font-size:13px;"  placeholder="&#xF007; Name" value="'.$sp_name.'">';}
+       elseif (isset($_SESSION['email'])){
+           	$email = $_SESSION['email']; 
+ 	          $name = $_SESSION['name'];
+            echo'<input type="hidden" name="sender_email" maxlength="21" class="form-control" style="font-family:arial,fontawesome;font-size:13px;" placeholder="&#xF1fa; Email" value="'.$email.'"><br>';
+            echo'<input type="hidden" maxlength="18" name="sender_name" class="form-control" style="font-family:arial,fontawesome;font-size:13px;"  placeholder="&#xF007; Name" value="'.$name.'">';}
+       else{
+       ?>
+           <input type="hidden" maxlength="21" name="sender_name" placeholder="&#xF007; Name" class="form-control" style="font-family:arial,fontawesome;font-size:13px;" ><br>
+           <input type="email" name="sender_email" placeholder="&#xF1fa; Email" class="form-control" style="font-family:arial,fontawesome;font-size:13px;" ><br>
+       <?php
+             }
+
+         ?> 
+         <input type="hidden" name="id" value="<?php echo$id  ?>"><br>
+         <textarea class="form-control" name="comment" placeholder="...Your review" rows="4" style="font-size:13px;"></textarea><br>
+         <button id='btn-comment' class="btn btn-warning form-control" style=""><i class="fa fa-paper-plane"></i> Add comment</button>
+         <div class="text-center" style="display: none;" id="loading-image"><img id="loader"  height="50" width="50" src="loading-image.GIF"></div>
+       </form>
+ </div>
+
       <!------------------------------------------btn-scroll--------------------------------------------------->
 
        <a class=" btn-down" onclick="topFunction()">&#8593;</a>
@@ -445,6 +562,14 @@ $('.reviews-container'). flickity({
 
 
 
+</script>
+
+
+<script type="text/javascript">
+ function toggle_comment() {
+var popup = document.getElementById('popup-comment');
+popup.classList.toggle('active');
+ }
 </script>
 
 <script type="text/javascript">
@@ -614,6 +739,21 @@ popup.classList.toggle('active');
 }
 
 </script>
+
+
+<script>
+function share() {
+    var url = $('.share').attr('id');
+    var encodedUrl = encodeURIComponent(url);
+    var facebookShare = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+    var twitterShare = "https://twitter.com/intent/tweet?url=" + encodedUrl;
+    var linkedinShare = "https://www.linkedin.com/shareArticle?url=" + encodedUrl;
+    window.open(facebookShare, "_blank");
+    window.open(twitterShare, "_blank");
+    window.open(linkedinShare, "_blank");
+}
+</script>
+
 
 </body>
 </html>

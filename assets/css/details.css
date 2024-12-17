@@ -2,6 +2,9 @@
     gap:10px;
 }
 
+.active-button{
+    display: none;
+}
 
 .img-service{
     height:450px;
@@ -12,9 +15,9 @@
 
 .connect{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    gap:10px;
+    gap:0px;
 }
 
 .more {
@@ -179,3 +182,146 @@ border-radius:10px 10px 0px 0px;
     margin-left: -15px;
    
 }
+
+
+#popup,#popupAbuse,.popPay{
+
+  
+         position:fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%,-50%);   
+         padding:5px;
+         z-index: 99; 
+         background: #fff;
+         visibility:hidden;
+         opacity:0;
+          transition: 0.3s;
+    
+    }
+    
+    #popup.active,#popupAbuse.active,.popPay.active{
+      
+         visibility: visible;
+         opacity: 1;
+         transition: 0.3s;
+    
+        }
+    
+    #close,#closeAbuse,.closePay{
+    
+         font-size: 15px;
+         color:white;
+          cursor: pointer;
+         position: absolute;
+         right:0;   
+         border:1px solid transparent transparent;
+         background-color: red;
+         border-radius:50%;
+         padding:0px 5px;
+    
+    }
+    
+    a{
+        cursor: pointer;
+    }
+    
+    #close:hover, #close:focus,#closeAbuse#close:hover,#closeAbuse:focus,.closePay:hover,.closePay:focus{
+         opacity: 0.6;
+         border: none;
+         outline: none;
+         outline: none;
+    
+    }
+    
+    
+    
+    
+    #popup-comment{
+    background-color: rgba(248,248,248,0.3);  
+    background-color: rgba(248,248,248,0.3);  
+    position:fixed;
+    padding: 4px 8px !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    padding:5px;
+    z-index: 99;
+    box-shadow: 0 5px 30px rgba(0,0,0,.30);
+    background: #fff;
+    visibility:hidden;
+    opacity:0;
+    transition: 0.3s;
+    text-align: center;
+    font-size: 13px !important;
+    font-family: poppins !important;
+    
+    }
+    
+    
+    
+    #popup.active,#popup-comment.active{
+      
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s;
+    
+        }
+    
+    #close,#close-comment,#closeAbuse{
+    
+    font-size: 12px;
+    position: absolute;
+    top: -6px;
+    left: 93%;
+    color:black;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    border-radius: 50%;
+    background-color: white;
+    z-index: 1;
+    
+    
+    
+    }
+    #close:hover, #close:focus, #close-comment:hover,#close-comment:focus,#closeAbuse:hover,#closeAbuse:focus{
+    opacity: 0.6;
+    border: none;
+    outline: none;
+     outline: none;
+    
+    }
+    
+    
+    #popup input,#popup textarea,#popup-comment input,#popup-comment textarea{
+    
+    border:1px solid rgba(0,0,0,0.1);
+    
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+    
+    margin: 10px 0px;
+    
+    font-size: 0.9rem !important;
+    
+    
+    
+    }
+
+    
+#btn-comment{
+
+	text-transform: capitalize;
+	font-family: poppins;
+	color: white;
+	box-shadow:0px 5px 8px rgba(0,0,0,0.3);
+	border-radius:3px;
+}
+
+.btn-comment:hover,.btn-comment:focus{
+
+outline: 3px solid skyblue;
+
+}
+    
+    
