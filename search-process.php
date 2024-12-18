@@ -1,7 +1,6 @@
-<?php session_start();
- error_reporting(E_ALL ^ E_NOTICE);
+<?php session_start(); ?>
+ <?php error_reporting(E_ALL ^ E_NOTICE);
  require 'engine/config.php'; 
-
 if(isset($_POST["submit"]))   {  
 if(!empty($_POST["search"]))   {  
 $query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
