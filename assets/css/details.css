@@ -2,6 +2,12 @@
     gap:10px;
 }
 
+
+.loader{
+    display: none;
+}
+
+
 .active-button{
     display: none;
 }

@@ -45,18 +45,9 @@ window.location.href ='login.php';
 </head>
 <body>
 
-
-<?php include '../../components/overlay-inner.php'; ?>
-
 <div id="overlay" style="display: none;">
   <div class="loader"></div>
 </div>
-
-<br>
-
-<br>
-
-<br>
 
 <div style="padding: 20px;">
 

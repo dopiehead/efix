@@ -47,11 +47,20 @@ if (isset($_SESSION["id"])) {
 }
 
 
-if (isset($_SESSION["sp_id"])) {
+elseif (isset($_SESSION["sp_id"])) {
       $date = $_SESSION['sp_date'];
       $userId = $_SESSION['sp_id'];
       $username = $_SESSION['sp_name'];
       $useremail = $_SESSION['sp_email'];
+
+}
+
+else{
+  $userId = null;
+  $date = null;
+  $username = null;
+  $useremail = null;
+
 
 }
 
@@ -139,7 +148,7 @@ if (isset($_SESSION["sp_id"])) {
                            <?php  } else{ ?>
 
 
-                               <?php if($id != $_SESSION['sp_id']){ ?>
+                               <?php if($sp_id != $userId){ ?>
 
 
                                    &nbsp;<a class="btn btn-success text-white" onclick="toggle()">Send message</a>&nbsp;
@@ -244,6 +253,103 @@ if (isset($_SESSION["sp_id"])) {
         </div>
   
       </div>
+
+
+
+   <!-----------------------------------------------popup------------------------------------------------------------->
+
+<div id="popup">
+<div class="container">
+<p><b>How was your experience?</b></p>
+<p style="text-transform:capitalize">Rate <?php echo$sp_name; ?></p>
+<div id="com"><div id="my">
+<?php
+if (isset($_GET['sp_id'])) {
+require 'engine/configure.php';
+$id = mysqli_escape_string($conn,$_GET['sp_id']);
+$service_provider = mysqli_query($conn,"SELECT * from service_providers where sp_id ='".htmlspecialchars($id)."'");
+while ($row = mysqli_fetch_array($service_provider)) {
+$id =  $row['sp_id'];
+echo"<div></div>";
+if(isset($_SESSION['id'])  ||  isset($_SESSION['business_id']) ||isset($_SESSION['sp_id'])){ 
+
+if ($row['ratings']>0 && $row['ratings']<=10) {     
+?>
+
+<span style="cursor: pointer;" id="<?php echo $id ?>" class="btn-rating" ><i class="fa fa-star" style="color: orange;"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i  class="fa fa-star"></i></span><br>
+<?php }
+
+elseif ($row['ratings']>11 && $row['ratings']<=30) {     
+?>
+
+<span style="cursor: pointer;" id="<?php echo $id ?>" class="btn-rating" ><i class="fa fa-star" style="color: orange;"></i><i class="fa fa-star" style="color: orange;"></i><i class="fa fa-star""color: orange;"></i><i class="fa fa-star"></i><i  class="fa fa-star"></i></span><br>
+<?php }
+
+elseif ($row['ratings']>31 && $row['sp_ratings']<=50) {     
+?>
+
+<span style="cursor: pointer;" id="<?php echo $id ?>" class="btn-rating" ><i class="fa fa-star" style="color: orange;"></i><i class="fa fa-star" style="color: orange;"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i  class="fa fa-star"></i></span><br>
+<?php }
+
+
+else { ?>
+
+<span style="cursor: pointer;" id="<?php echo $id ?>" class="btn-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span><br>
+
+<?php
+	}
+}
+
+}
+	
+}
+
+?>
+
+</div></div>
+
+<small>Share your experience, so next time we
+can serve you better</small><br>
+
+<form id="form-message">
+
+<input class="form-control" type="hidden" id="user_name" name="user_name" value="<?php echo$useremail?>">
+<input type="hidden" name="has" value="0" placeholder="" class="form-control">
+<input type="hidden" name="is_sender_deleted" value="0">
+<input type="hidden" name="is_receiver_deleted" value="0">
+<input type="hidden" name="sentto" value="<?php echo$sp_email; ?>" placeholder="" class="form-control">
+
+ <input type="hidden" name="subject" placeholder="" value="<?php echo$sp_speciality; ?>" class="form-control">
+
+ <input type="hidden" name="sentby" value="<?php echo$useremail?>">
+  <input type="hidden" name="name" value="<?php echo$username; ?>">
+  <input type="hidden" id="receiver_name" name="receiver_name" value="<?php echo$sp_email;?>">
+ <textarea name="message" cols="6" class="form-control"></textarea><div align="right">
+  	
+</div>
+<br>
+<input type="submit" name="submit-message" id="submit-message" value="submit" style="cursor:pointer;" class="btn btn-info btn-message"><a class="btn btn-danger"  onclick="toggle()" id="close">&times;</a>
+<img class="loader" id="loader"  height="50" width="50" src="loading-image.GIF">
+
+</form>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       
@@ -582,9 +688,9 @@ popup.classList.toggle('active');
 
 <script type="text/javascript">
 	
-function collapse() {
+     function collapse() {
 	// body...
-$('#demo').toggleClass('active-button');
+        $('#demo').toggleClass('active-button');
 
 }
 
@@ -595,22 +701,22 @@ $('#demo').toggleClass('active-button');
 <script type="text/javascript">
 $('.btn-pay').on('click',function(e){
   if (confirm("Do you want to pay to this service provider?")) {
-  var pay = $('.btn-pay').attr('id');
- 
-  $.ajax({
-  type: "POST",
-  url: "provider-pay.php",
-  data: 'id='+pay,
-  success: function(data) {
+      var pay = $('.btn-pay').attr('id');
+      e.preventDefault();
+      $.ajax({
+         type: "POST",
+         url: "provider-pay.php",
+         data: 'id='+pay,
+         success: function(data) {
 
-  if (data==1) {
-  window.location="pay-sp.php"; 
- }
-              
-else{
-swal({icon:"error",text:data});
+             if (data==1) {
+               window.location="pay-sp.php"; 
+             }
+             
+             else{
+               swal({icon:"error",text:data});
 
-}
+             }
            
 
            
@@ -650,13 +756,14 @@ $('#submit-sp').on('click',function(e){
                 $("#loading-image").hide();
             if(response==1){
 
-swal({
-text:"Your message has been recieved. Thank you!",
-icon:"success",
-});
+                swal({
+                   title:"Success",
+                   text:"Your message has been recieved. Thank you!",
+                   icon:"success",
+                 });
 
- $("#popupAbuse").hide(1000);
-    $("#report-form")[0].reset();
+                 $("#popupAbuse").hide(1000);
+                 $("#report-form")[0].reset();
              }
 
        else { 
@@ -667,8 +774,7 @@ text:"Issue field is required",
 icon:"error",
 
 });
-         
-            
+                  
 }  
             },
 
@@ -687,9 +793,9 @@ icon:"error",
 <script type="text/javascript">
     
     function toggle_abuse() {
+     var popup = document.getElementById('popupAbuse');
+     popup.classList.toggle('active');
 
-var popup = document.getElementById('popupAbuse');
-popup.classList.toggle('active');
   }
 
 </script>
@@ -699,27 +805,30 @@ $('#submit-message').on('click',function(e){
         e.preventDefault();
         $(".loader").show();
           $.ajax({
-           type: "POST",
-           url: "engine/message-process.php",
-           data:  $("#form-message").serialize(),
-           cache:false,
-           contentType: "application/x-www-form-urlencoded",
-           success: function(response) {
-           $(".loader").hide();
-           if (response==1) {
-            swal({
-            text:"Message sent",
-             icon:"success",
-            });
+                 type: "POST",
+                 url: "engine/message-process.php",
+                 data:  $("#form-message").serialize(),
+                 cache:false,
+                 contentType: "application/x-www-form-urlencoded",
+                 success: function(response) {
+                 $(".loader").hide();
+                      if (response==1) {
+                          swal({
+                              text:"Message sent",
+                              icon:"success",
+                              title:"Success",
+                       });
                 
-            $("#popup").hide(1000);
-            $("#form-message")[0].reset(); 
+                           $("#popup").hide(1000);
+                           $("#form-message")[0].reset(); 
          
                                                         }    
-            else{
-            
-              swal({ icon:"error",
-              	     text:response
+                       else{
+                                    
+                              swal({ 
+                                 title:"Notice",    
+                                 icon:"error",
+              	                 text:response
               });
            
 
@@ -741,9 +850,8 @@ $('#submit-message').on('click',function(e){
 <script>
 
    function payForm() {
-
-var popup = document.getElementById('popPay');
-popup.classList.toggle('active');
+        var popup = document.getElementById('popPay');
+          popup.classList.toggle('active');
 }
 
 </script>
@@ -761,6 +869,17 @@ function share() {
     window.open(linkedinShare, "_blank");
 }
 </script>
+
+<script type="text/javascript">
+    
+    function toggle() {
+       var popup = document.getElementById('popup');
+       popup.classList.toggle('active');
+
+
+        }
+
+</script>  
 
 
 </body>
