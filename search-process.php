@@ -12,8 +12,6 @@ header("location:search-process.php?search=" .$query);
 
  ?>  
  
- 
-
  <?php
  $condition = "SELECT * from service_providers where sp_verified = 1";
  if (isset($_GET['search']) && !empty($_GET['search'])) {
@@ -42,31 +40,61 @@ $datafound = $data->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'components/links.php'; ?>
     <link rel="stylesheet" href="assets/css/cart.css">
-    <title>Serach result</title>
+    <link rel="stylesheet" href="assets/css/search-process.css">
+    <title>Search result</title>
 </head>
 <body>
     <?php include 'components/overlay-inner.php'; ?>
+
     <br><br>
-         <div>
+
+         <div class='container'>
+
+                <div class='d-flex flex-column flex-md-row justify-content-between align-items-center'>
+               
+      <?php if($datafound > 0) {
+          
+           while ($row = mysqli_fetch_array($data)) {
+
+                     $sp_img = $row['sp_img'];
+                     $sp_name = $row['sp_name'];
+                     $sp_category = $row['sp_category'];
+                     $sp_location = $row['sp_location'];
+               ?>
+
+           <div class='sp_package border border-secondary d-flex flex-row flex-column'>
+
+                <img src="<?php echo"efix/".$sp_img; ?>" alt="efix">
+
+                <span class='bar'>
+                    
+                     <span class='check-container text-white border-0'>
+                         <i class='fa fa-check fa-1x'></i>
+                    </span>
+                   
+                    
+                    <span class='bg-success pole px-5 rounded rounded-pill'><span style='visibility:hidden;font-size:5px !important;'>1</span></span>
+               
+               </span>
+                
+                <div class='px-2 py-1 text-sm text-capitalize d-flex flex-row flex-column'>
+
+                     <span class='fw-bold'><?php echo $sp_name; ?></span>
+               
+                     <span><?php echo $sp_category; ?></span>
+
+                      <span><?php echo $sp_location; ?></span>
+                </div>
+           </div>
+
+           <?php } } else {
+                
+                echo "No service provider found.";
+               
+           }?>
+
+           </div>
             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
-            
-
-
          </div>
   
 

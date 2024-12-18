@@ -24,7 +24,7 @@ $mypay = mysqli_query($conn,"select * from service_providers where sp_id='".html
 
 while ($pay=mysqli_fetch_array($mypay)) {
 
-$package = $pay['pricing'];
+$package = "3500";
 
 $provider_name = $pay['sp_name']; 
 
@@ -49,19 +49,13 @@ $txn_ref = time();
   <link rel="stylesheet" href="assets/css/pay-sp.css">
 </head>
 
-
-
-
 <body>
 
 <?php include 'components/overlay-inner.php'; ?>
 
 <br><br>
 
-
-
-
-<div style='text-align:center' class="container">
+<div class="container text-center">
     
   <div class="card"> 
   
@@ -72,42 +66,35 @@ $txn_ref = time();
       
   </div>
   
-  
-  
-  
     
-<h6><?php echo$provider_name;?></h6> <br>
+     <h6><?php echo$provider_name;?></h6> <br>
 
- <p>I am interested in hiring your services as a <?php  echo$provider_speciality;?> . </p>   
+     <p>I am interested in hiring your services as a <?php  echo$provider_speciality;?> . </p>   
   
-
-<span id="price">Price: &#8358;<?php echo $package;  ?></span><br>
-
+     <span id="price">Price: &#8358;<?php echo $package;  ?></span><br>
 
 <form method="POST" action="initialize-sp.php">
 
-<input type="hidden" name="redirect_url" value="https://e-stores.com/response.php">
+     <input type="hidden" name="redirect_url" value="https://e-stores.com/response.php">
 
-<input type="hidden" name="amount" value="<?php echo $package;  ?>">
+     <input type="hidden" name="amount" value="<?php echo $package;  ?>">
 
-<input type="hidden" name="currency" value="NGN">
+     <input type="hidden" name="currency" value="NGN">
 
-<input type="hidden" name="provider_id" value="<?php echo$provider_id?>">
+     <input type="hidden" name="provider_id" value="<?php echo$provider_id?>">
 
-<input type="hidden" name="name" value="<?php echo$provider_name?>">
+     <input type="hidden" name="name" value="<?php echo$provider_name?>">
 
-<input type="hidden" id="email" name="email" value="<?php echo$useremail?>">
+     <input type="hidden" id="email" name="email" value="<?php echo$useremail?>">
 
-<input type="hidden" name="tx_ref" id="txn_ref" value="<?php echo$txn_ref;?>">
+     <input type="hidden" name="tx_ref" id="txn_ref" value="<?php echo$txn_ref;?>">
 
-<button type="submit" id='submit' name="submit" style="color: white;font-family: sans-serif;font-size:;" class="btn btn-danger ">PROCEED</button>
+     <button type="submit" id='submit' name="submit" style="color: white;font-family: sans-serif;font-size:;" class="btn btn-danger ">PROCEED</button>
 
 </form>
 
-
-<br><br>
-</div>
-
+         <br><br>
+     </div>
 
  </div>  
 <br><br>
