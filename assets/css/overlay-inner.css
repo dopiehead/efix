@@ -1,6 +1,6 @@
 
 .logo-container img{
-    width:150px;
+    width:100px;
     height:auto;
 }
 
@@ -8,8 +8,9 @@
     
     
 .logo-container img{
-    width:120px;
+    max-width:45px;
     height:auto;
+  
 }
 }
 
@@ -233,6 +234,12 @@
 .overlayParent{
      display:none !important;
 
+
+}@media screen and (max-width:768px){
+   
+     .fa-heart{
+        margin-top:3px;
+     }
 
 }
 

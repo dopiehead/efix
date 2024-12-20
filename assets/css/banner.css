@@ -1,10 +1,12 @@
 .banner-container{
-background-image:linear-gradient(to right top,rgb(241, 140, 32),rgba(255, 145, 28, 0.2));
+background-image:linear-gradient(to right top,rgba(50, 50, 50, 0.3),rgba(255, 145, 28, 0.5)),url("../img/skyscrapper.jpg");
 height:250px;
 display:flex;
 justify-content:center;
 align-items: center;
 flex-direction:column;
+background-size:cover;
+background-position:100% 100%;
 }
 
 .fw-bold{

@@ -1,17 +1,31 @@
-<?php  session_start();
+<?php  
+
+session_start();
+
 require 'engine/config.php';
-if(isset($_GET['work']) && !empty($_GET['work'])){
+
+if (isset($_GET['work']) && !empty($_GET['work'])) {
+
     $work = $_GET['work'];
-   
 }
 
-  if(isset($_SESSION['address']) && !empty($_GET['address'])){
+if (isset($_POST["submit"])) {  
 
-        $myaddress = $_SESSION['address'];
+    if (!empty($_POST["search"])) {  
+     
+        $query = str_replace(" ", "+", mysqli_real_escape_string($conn, $_POST["search"]));
 
-  }
+        ?>
+        
+        <script>
+       
+            window.location.href = 'search-process.php?search=' + '<?php echo $query; ?>';
 
-
+        </script>
+        
+        <?php 
+    }  
+}  
 ?>
 
 <html lang="en">
@@ -20,6 +34,7 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'components/links.php' ?>
     <link rel="stylesheet" href="assets/css/service-providers.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Distance</title>
 
 </head>
@@ -28,11 +43,14 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
     
  <div class="container">
 
- <h6 class="mt-4 fw-bold "><span class='text-capitalize'><?php if(!empty($work)) {echo $work;} ?></span> services around you</h6>
+ <h6 class="mt-4 fw-bold "><span class='text-capitalize'><?php if(!empty($work)) {echo $work;} ?></span> Services around you</h6>
 
   <br><br>
 
-  <?php include 'components/banner.php'; ?>
+  <div data-aos='fade-up' data-aos-transition='ease-in-out'>
+
+       <?php include 'components/banner.php'; ?>
+  </div>
 
   <br><br>
       
@@ -44,7 +62,7 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
 
       $initial_page = ($page - 1) * $num_per_page;
 
-      $condition ="SELECT  *  FROM  service_providers";
+      $condition =" SELECT * FROM  service_providers WHERE sp_verified = 1";
 
       $total_sql = mysqli_query($conn,"SELECT COUNT(*) AS total FROM service_providers");
 
@@ -54,15 +72,25 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
 
      if(isset($work) || !empty($work)){
        
-         $condition .= " WHERE sp_category like '%".$work."%' OR sp_speciality like '%".$work."%'";
+         $condition .= " AND sp_category like '%".$work."%' OR sp_speciality like '%".$work."%'";
      }
 
 
-     if(!empty($_SESSION['myaddress'])){
+     if(isset($_SESSION['address']) && !empty($_SESSION['address'])){
 
-         $condition.= " HAVING sp_location LIKE '%".$myaddress."%'";
+        $myaddress = $_SESSION['address'];
+  
+        $getadress = explode(" ", $_SESSION['address']);
 
-     }
+        foreach ($getadress as $address) {
+  
+       $condition .= " AND sp_location like '%".$address."%' OR sp_location like '%".$address."%'";
+
+   }
+
+}
+
+  
 
      $condition .= " LIMIT $initial_page, $num_per_page";
 
@@ -93,7 +121,7 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
 
          ?>
 
-             <div class='bg-white card border-0 w-100'>
+             <div class='bg-white card border-0 w-100' data-aos='fade-up' data-aos-transition='ease-in-out'>
             
                 <div class='service_provider_card mb-4'>
                  
@@ -106,10 +134,8 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
 
                 <img src="<?php echo"efix/" .$sp_img ?>" class=" rounded rounded-circle" alt="">
 
-                     <h5 class='text-dark fw-bold mt-3'><?php echo $sp_name ?></h5>
+                     <h5 class='text-dark fw-bold mt-3 text-capitalize'><?php echo $sp_name ?></h5>
                      <p class='text-secondary text-capitalize'><?php echo htmlspecialchars($sp_speciality) ?></p>
-                     <p class='text-primary text-capitalize'><?php echo htmlspecialchars($sp_location); ?></p>
-                     <p class='text-secondary text-sm'><?php echo htmlspecialchars($sp_bio); ?></p>
 
                     <hr>
 
@@ -169,5 +195,16 @@ if ($page < $total_num_page) {
     <br><br>
 
     <?php include 'components/footer.php'; ?>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+        offset: 200, // Trigger animations after scrolling 200px
+       // Delay before starting animation
+   // Duration of the animation
+      easing: 'ease-in-out', // Easing function
+
+    });
+  </script>
 </body>
 </html>

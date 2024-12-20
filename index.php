@@ -52,12 +52,16 @@ function getAddressFromCoordinates($latitude, $longitude) {
 if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 
     $latitude = $_SESSION['latitude'];
+
     $longitude = $_SESSION['longitude'];
 
     // Get the address from coordinates
     $address = getAddressFromCoordinates($latitude, $longitude);
+
    $myaddress =  $address;
+
    $_SESSION['address'] = $myaddress;
+
 } else {
     // echo "Latitude and/or Longitude are not set in session.";
 }
@@ -82,7 +86,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 
      <div>
 
-          <img src='assets/img/logo.png'>
+          <a href='index.php'><img src='assets/img/logo.png'></a>
          
      </div>
 
@@ -96,11 +100,6 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 
            </form>
       </div>
-
-
-
-
-
 
      <ul class='link-container fw-bold'>
 
@@ -174,14 +173,13 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 
      <div class='container bg-section'>
 
-        <div class='bg-text mt-4 pt-3 ' data-aos='fade-left' data-aos-easing="linear"
-        data-aos-duration="1500">
+        <div class='bg-text mt-4 pt-3 ' data-aos='fade-left' data-aos-easing="linear"  data-aos-duration="1500">
 
               <span class='text-warning  bg-white rounded rounded-pill py-1 px-2'>READY TO HELP YOU !</span><br><br>
 
-              <h1 class='fw-bold' data-aos='fade-in-left'>The best solution for every house problem</h1>
+              <h1 class='fw-bold'>The best solution for every house problem</h1>
 
-              <p class='text-secondary'  data-aos='fade-left'>Our open, positive and proactive approach helps us find ways to align your work environment with the children</p><br>
+              <p class='text-secondary'>Our open, positive and proactive approach helps us find ways to align your work environment with the children</p><br>
 
               <div class='button-container'>
             
@@ -194,7 +192,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
          </div>
 
          <div class='bg-img' data-aos='fade-right 'data-aos-easing="linear"
-         >
+        data-aos-delay='1000' >
 
              <img src="assets/img/hero.png" alt="efix">
   
@@ -207,7 +205,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 <!-- body part -->
 <div class='about-home'>
 
- <div class='container about-section'  data-aos='fade-up'>
+ <div class='container about-section'  data-aos='fade-up' data-aos-transition="ease-in-out">
 
      <div class=' d-flex bg-warning text-white text-center flex-column flex-row' >
          <span><i class='fa fa-check fa-2x'></i></span>
@@ -216,7 +214,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
      </div>
 
 
-     <div class=' d-flex bg-warning text-white text-center flex-row flex-column >
+     <div class=' d-flex bg-warning text-white text-center flex-row flex-column' >
          <span><i class='fa fa-thumbs-up fa-2x'></i></span>
          <span>Reliable Service</span>
 
@@ -245,7 +243,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 
      <h4 class='text-white fw-bold text-center ' data-aos='fade-up'>Explore our comprehensive range<br> of Professional Services</h4><br>
      
-     <div class='container services text-white'  data-aos='flip-up'>
+     <div class='container services text-white'  data-aos='fade-up' data-aos-transition="ease-in-out">
          
          <div>
     
@@ -367,7 +365,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
  </div>
  <br>
 
- <div class=' why-section container '  data-aos='zoom-in'>
+ <div class=' why-section container ' data-aos='zoom-in' data-aos-transition="ease-in-out">
 
       <div>
          
@@ -415,7 +413,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 
 
 
- <div class='bg-white py-5 container d-flex justify-content-between'  data-aos='fade-in'>
+ <div class='bg-white py-5 container d-flex justify-content-between'  data-aos='fade-up' data-aos-transition="ease-in-out">
 
      <div>
          <p class='text-warning fw-bold text-sm'>Testimonials</p>
@@ -676,6 +674,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
                     type: "POST",           // Use POST method to send data
                     data: {latitude: latitude, longitude: longitude}, // Send data
                     success: function(data) {
+                      
                         if (data == 1) {
                             console.log("Success");
                             // Success response
@@ -714,19 +713,11 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
 
 <script>
          var myaddress = "<?php echo $myaddress; ?>";
-            alert(myaddress);
-
 
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 

@@ -15,12 +15,7 @@ if(isset($_POST["submit"]))   {
 
  }  
 
- if(isset($_SESSION['myaddress']) && !empty($_SESSION['myaddress'])){
-
-      $myaddress = $_SESSION['myaddress'];
- }
-
- $condition = "SELECT * FROM service_providers WHERE sp_verified = 1 HAVING sp_location LIKE '".$myaddress."'";
+ $condition = "SELECT * FROM service_providers WHERE sp_verified = 1 AND sp_location LIKE '".$myaddress."'";
 
  if (isset($_GET['search']) && !empty($_GET['search'])) {
 
@@ -30,6 +25,20 @@ if(isset($_POST["submit"]))   {
 
            $condition .= " AND (`sp_location` LIKE '%".htmlspecialchars($text)."%' OR `sp_name` LIKE '%".htmlspecialchars($text)."%' OR `sp_bio` LIKE '%".htmlspecialchars($text)."%' OR `sp_category` LIKE '%".htmlspecialchars($text)."%' OR `sp_speciality` LIKE '%".htmlspecialchars($text)."%')";
      } 
+
+ }
+
+     if(isset($_SESSION['address']) && !empty($_SESSION['address'])){
+
+          $myaddress = $_SESSION['address'];
+    
+          $getadress = explode(" ", $_SESSION['address']);
+
+          foreach ($getadress as $address) {
+    
+         $condition .= " AND sp_location like '%".$address."%' OR sp_location like '%".$address."%'";
+
+     }
 
 $num_per_page = 20;
 
@@ -60,10 +69,59 @@ $datafound = $data->num_rows;
     <?php include 'components/overlay-inner.php'; ?>
 
     <br><br>
+   
+    <div class='banner-container'>
 
-         <div class='container'>
+       <h2 class='fw-bold text-white '>Search Page </h2>
 
-                <div class='d-flex flex-column flex-md-row justify-content-between align-items-center'>
+    </div>
+
+    <br>
+
+
+<div class='container'>
+
+      <div class='d-flex flex-md-row flex-column'>
+
+            <div class='d-flex flex-row flex-column g-3 col-md-4'>
+
+                 <h3 class='fw-bold'>Filter</h3><br>
+
+                 <select class='bg-light text-secondary border-0 mt-2 py-2' name="sp_category" id="">
+                    
+                     <option>Category</option>
+               
+                 </select>
+
+                 <select class='bg-light text-secondary border-0 mt-2 py-2' name="sp_speciality" id="">
+                    
+                     <option>Speciality</option>
+               
+                 </select>
+
+                 <select class='bg-light text-secondary border-0 mt-2 py-2' name="sp_location" id="">
+                    
+                     <option>Location</option>
+                    
+                 </select>
+
+                 <select class='bg-light text-secondary border-0 mt-2 py-2' name="pricing" id="">
+
+                     <option>Pricing</option>
+                    
+                 </select>
+
+                 <select class='bg-light text-secondary border-0 mt-2 py-2' name="sp_experience" id="">
+                    
+                     <option>Experience</option>
+                    
+                </select>
+
+                 <select class='bg-light text-secondary border-0 mt-2 py-2' name="e_verify" id=""><option>Verified</option></select>
+
+          </div>
+
+                <div class='d-flex flex-column flex-md-row justify-content-between align-items-center bg-light col-md-8'>
                
       <?php if($datafound > 0) {
           
@@ -96,9 +154,9 @@ $datafound = $data->num_rows;
                
                      <span><?php echo $sp_category; ?></span>
 
-                      <span><?php echo $sp_location; ?></span>
+                      
                 </div>
-                
+
            </div>
 
            <?php } } else {
@@ -110,6 +168,8 @@ $datafound = $data->num_rows;
            </div>
             
          </div>
+
+      </div>
   
 
     <br><br>

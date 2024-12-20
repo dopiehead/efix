@@ -5,29 +5,35 @@
     
     <div class="nav_btn"> 
 
-         <div class="menu-icon">
-        
-               <div class="bar bar1"></div>
-               <div class="bar bar2"></div>
-               <div class="bar bar3"></div>
 
-         </div> 
 
          <div class='logo-container'>
 
-           <a href='index.php'><img src ='assets/img/logo.png'></a>
+              <a href='index.php'><img src ='assets/img/logo.png'></a>
 
          </div>
+
+
+         <div class="menu-icon">
+        
+             <div class="bar bar1"></div>
+             <div class="bar bar2"></div>
+             <div class="bar bar3"></div>
+
+         </div> 
 
 
      </div>
 
      <div class="search_container">
 
-      <input type="search" placeholder="Search for service providers" class='rounded rounded-pill px-1'>
-      <button class="btn rounded btn-secondary rounded-pill">Search</button>
+         <form method = 'POST' action='search-process.php'>
 
+              <input type="search" name='search' placeholder="Search for service providers" class='rounded rounded-pill px-1'>
 
+              <button name='submit' class="btn rounded btn-secondary rounded-pill">Search</button>
+
+         </form>
 
      </div>
 
@@ -50,8 +56,6 @@
          </div>
 
             
-
-
          <div class='log-icons'>
                
                <?php if(!isset($_SESSION['id']) || !isset($_SESSION['sp_id'])){ ?>
@@ -64,21 +68,17 @@
 
          </div>
 
-
-
-
      </div>
-
-
 
 </div>
 
 <div>
 
 <a class="text-dark fw-bold mx-3" onclick="window.history.back();">
-    <i class="fa fa-chevron-left fa-1x"></i>
+      <i class="fa fa-chevron-left fa-1x"></i>
 </a>
-</div>
+
+  </div>
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<div id="myform" class="overlay overlayParent">
+ <div id="myform" class="overlay overlayParent">
 
-<div class="overlay-content">
+      <div class="overlay-content">
 
-<a href='service_providers.php' class='text-white'>Service providers</a>
+          <a href='service_providers.php' class='text-white'>Service providers</a>
 
-<a class='text-white' href='charges.php'>Call out charges</a>
+         <a class='text-white' href='charges.php'>Call out charges</a>
 
-<a class='text-white' href='profile.php'>Sell a product</a>  
+         <a class='text-white' href='profile.php'>Sell a product</a>  
   
-</div>
-</div>
+      </div>
+ </div>
 
 
 
