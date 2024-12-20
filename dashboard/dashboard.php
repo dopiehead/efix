@@ -117,7 +117,7 @@ elseif(isset($_SESSION['email'])){
                                  
                      <div>
 
-                         <h6 class='fw-bold fs-4'><i class='fa fa-naira-sign'></i>20000</h6>
+                         <h6 class='fw-bold fs-4'><i class='fa fa-naira-sign'></i>0</h6>
 
                          <span class='text-capitalize mt-2 text-secondary'>portfolio balance</span>
                            

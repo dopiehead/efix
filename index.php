@@ -57,6 +57,7 @@ if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
     // Get the address from coordinates
     $address = getAddressFromCoordinates($latitude, $longitude);
    $myaddress =  $address;
+   $_SESSION['address'] = $myaddress;
 } else {
     // echo "Latitude and/or Longitude are not set in session.";
 }

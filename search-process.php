@@ -1,30 +1,44 @@
-<?php session_start(); ?>
- <?php error_reporting(E_ALL ^ E_NOTICE);
- require 'engine/config.php'; 
+<?php session_start(); 
+
+ error_reporting(E_ALL ^ E_NOTICE);
+
+ require 'engine/config.php';
+
 if(isset($_POST["submit"]))   {  
-if(!empty($_POST["search"]))   {  
-$query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
-header("location:search-process.php?search=" .$query); 
+
+      if(!empty($_POST["search"]))   {  
+
+                $query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
+
+                 header("location:search-process.php?search=" .$query); 
  }  
 
  }  
 
- ?>  
- 
- <?php
- $condition = "SELECT * from service_providers where sp_verified = 1";
+ if(isset($_SESSION['myaddress']) && !empty($_SESSION['myaddress'])){
+
+      $myaddress = $_SESSION['myaddress'];
+ }
+
+ $condition = "SELECT * FROM service_providers WHERE sp_verified = 1 HAVING sp_location LIKE '".$myaddress."'";
+
  if (isset($_GET['search']) && !empty($_GET['search'])) {
-     $search_page = explode(" ",mysqli_escape_string($conn,$_GET['search'])) ;
-     foreach ($search_page as $text) {
-          $condition .= " AND (`sp_location` LIKE '%".htmlspecialchars($text)."%' OR `sp_name` LIKE '%".htmlspecialchars($text)."%' OR `sp_bio` LIKE '%".htmlspecialchars($text)."%' OR `sp_category` LIKE '%".htmlspecialchars($text)."%' OR `sp_speciality` LIKE '%".htmlspecialchars($text)."%')";
+
+      $search_page = explode(" ",mysqli_escape_string($conn,$_GET['search'])) ;
+
+      foreach ($search_page as $text) {
+
+           $condition .= " AND (`sp_location` LIKE '%".htmlspecialchars($text)."%' OR `sp_name` LIKE '%".htmlspecialchars($text)."%' OR `sp_bio` LIKE '%".htmlspecialchars($text)."%' OR `sp_category` LIKE '%".htmlspecialchars($text)."%' OR `sp_speciality` LIKE '%".htmlspecialchars($text)."%')";
      } 
 
 $num_per_page = 20;
+
 if (isset($_POST['page'])) {
-     $page = $_POST['page'];
+
+       $page = $_POST['page'];
 }
 else{
-     $page = 1;  
+      $page = 1;  
 }
 $initial_page = ($page-1)*$num_per_page; 
 $condition .= " limit $initial_page,$num_per_page";
@@ -68,13 +82,13 @@ $datafound = $data->num_rows;
                 <span class='bar'>
                     
                      <span class='check-container text-white border-0'>
-                         <i class='fa fa-check fa-1x'></i>
-                    </span>
+                          <i class='fa fa-check fa-1x'></i>
+                     </span>
                    
                     
-                    <span class='bg-success pole px-5 rounded rounded-pill'><span style='visibility:hidden;font-size:5px !important;'>1</span></span>
+                     <span class='bg-success pole px-5 rounded rounded-pill'><span style='visibility:hidden;font-size:5px !important;'>1</span></span>
                
-               </span>
+                </span>
                 
                 <div class='px-2 py-1 text-sm text-capitalize d-flex flex-row flex-column'>
 
@@ -84,6 +98,7 @@ $datafound = $data->num_rows;
 
                       <span><?php echo $sp_location; ?></span>
                 </div>
+                
            </div>
 
            <?php } } else {

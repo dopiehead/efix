@@ -2,8 +2,15 @@
 require 'engine/config.php';
 if(isset($_GET['work']) && !empty($_GET['work'])){
     $work = $_GET['work'];
-    
+   
 }
+
+  if(isset($_SESSION['address']) && !empty($_GET['address'])){
+
+        $myaddress = $_SESSION['address'];
+
+  }
+
 
 ?>
 
@@ -48,6 +55,13 @@ if(isset($_GET['work']) && !empty($_GET['work'])){
      if(isset($work) || !empty($work)){
        
          $condition .= " WHERE sp_category like '%".$work."%' OR sp_speciality like '%".$work."%'";
+     }
+
+
+     if(!empty($_SESSION['myaddress'])){
+
+         $condition.= " HAVING sp_location LIKE '%".$myaddress."%'";
+
      }
 
      $condition .= " LIMIT $initial_page, $num_per_page";
