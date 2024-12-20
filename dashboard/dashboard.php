@@ -146,7 +146,7 @@ elseif(isset($_SESSION['email'])){
 
                              <h6 class='fw-bold text-primary'>Total Request</h6>
 
-                             <span class='fw-bold fs-4'>50000</span>
+                             <span class='fw-bold fs-4'>0</span>
 
                              <div class='mt-3'><span id='bg-success-star' class='bg-danger-star'></span><i class='fa fa-star'></i> <span class='text-danger text-sm'>-12.76%</span> <span class='text-primary text-sm'>Last month</span></div>
                             
@@ -157,7 +157,7 @@ elseif(isset($_SESSION['email'])){
 
                              <h6 class='fw-bold text-primary'>Total Work done</h6>
 
-                             <span class='fw-bold fs-4'>80000</span>
+                             <span class='fw-bold fs-4'>0</span>
 
                              <div class='mt-3'><span id='bg-success-star' class='bg-success-star'></span><i style='background-color:green;' class='fa fa-star'></i> <span class='text-primary text-sm'>+343%</span> <span class='text-primary text-sm'>Last month</span></div>
                             
@@ -169,7 +169,7 @@ elseif(isset($_SESSION['email'])){
 
                              <h6 class='fw-bold text-primary'>Total Customers</h6>
 
-                             <span class='fw-bold fs-4'>100000</span>
+                             <span class='fw-bold fs-4'>0</span>
 
                              <div class='mt-3'><span id='bg-danger-star' class='bg-danger-star text-white'></span><i class='fa fa-star'></i> <span class='text-danger text-sm'>-12.76%</span> <span class='text-primary text-sm'>Last month</span></div>
                             
@@ -179,16 +179,10 @@ elseif(isset($_SESSION['email'])){
 
                  </div>
 
-                   
-
 
               </div>
 
-
-
-
               <div>
-
 
                    <div class='d-flex market-percentage'>
 

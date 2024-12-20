@@ -10,9 +10,58 @@ if(isset($_POST["submit"]))   {
    }  
 
  }  
+
  ?> 
 
 <?php { ?>
+
+<input type="hidden" id='mylongitude'>
+<input type="hidden" id='mylatitude'>
+
+
+<?php
+session_start(); // Start the session to access session variables
+
+function getAddressFromCoordinates($latitude, $longitude) {
+    // Replace YOUR_OPENCAGE_API_KEY with your OpenCage API key
+    $apiKey = 'a066b39ac06a4ef98fbfe9368f1f8182'; // Replace with your OpenCage API key
+    $url = "https://api.opencagedata.com/geocode/v1/json?q=$latitude+$longitude&key=$apiKey&language=en";
+
+    // Suppress errors for file_get_contents and handle them manually
+    $response = @file_get_contents($url);
+
+    // Check if the request was successful
+    if ($response === FALSE) {
+        // return "Error: Unable to retrieve location data.";
+    }
+
+    // Decode the JSON response
+    $responseData = json_decode($response);
+
+    // Check if the response is valid
+    if ($responseData && $responseData->status->code == 200 && isset($responseData->results[0])) {
+        // Get the formatted address from the response
+        $address = $responseData->results[0]->formatted;
+        return $address;
+    } else {
+        return "Address not found!";
+    }
+}
+
+// Check if latitude and longitude are set in session
+if (isset($_SESSION['latitude']) && isset($_SESSION['longitude'])) {
+
+    $latitude = $_SESSION['latitude'];
+    $longitude = $_SESSION['longitude'];
+
+    // Get the address from coordinates
+    $address = getAddressFromCoordinates($latitude, $longitude);
+   $myaddress =  $address;
+} else {
+    // echo "Latitude and/or Longitude are not set in session.";
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +70,7 @@ if(isset($_POST["submit"]))   {
     <?php include 'components/links.php';     ?>
     <link rel="stylesheet" href="assets/css/index-new.css">
     <link rel="stylesheet" href="assets/css/overlay.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Homepage</title>
 </head>
 <body class='bg-light'>
@@ -123,13 +173,14 @@ if(isset($_POST["submit"]))   {
 
      <div class='container bg-section'>
 
-        <div class='bg-text mt-4 pt-3 '>
+        <div class='bg-text mt-4 pt-3 ' data-aos='fade-left' data-aos-easing="linear"
+        data-aos-duration="1500">
 
               <span class='text-warning  bg-white rounded rounded-pill py-1 px-2'>READY TO HELP YOU !</span><br><br>
 
-              <h1 class='fw-bold'>The best solution for every house problem</h1>
+              <h1 class='fw-bold' data-aos='fade-in-left'>The best solution for every house problem</h1>
 
-              <p class='text-secondary'>Our open, positive and proactive approach helps us find ways to align your work environment with the children</p><br>
+              <p class='text-secondary'  data-aos='fade-left'>Our open, positive and proactive approach helps us find ways to align your work environment with the children</p><br>
 
               <div class='button-container'>
             
@@ -141,7 +192,8 @@ if(isset($_POST["submit"]))   {
 
          </div>
 
-         <div class='bg-img'>
+         <div class='bg-img' data-aos='fade-right 'data-aos-easing="linear"
+         >
 
              <img src="assets/img/hero.png" alt="efix">
   
@@ -154,16 +206,16 @@ if(isset($_POST["submit"]))   {
 <!-- body part -->
 <div class='about-home'>
 
- <div class='container about-section'>
+ <div class='container about-section'  data-aos='fade-up'>
 
-     <div class=' d-flex bg-warning text-white text-center flex-column flex-row  '>
+     <div class=' d-flex bg-warning text-white text-center flex-column flex-row' >
          <span><i class='fa fa-check fa-2x'></i></span>
          <span>Professional Expertise</span>
 
      </div>
 
 
-     <div class=' d-flex bg-warning text-white text-center flex-row flex-column '>
+     <div class=' d-flex bg-warning text-white text-center flex-row flex-column >
          <span><i class='fa fa-thumbs-up fa-2x'></i></span>
          <span>Reliable Service</span>
 
@@ -186,13 +238,13 @@ if(isset($_POST["submit"]))   {
 
 
  
-     <span class='text-white bg-secondary rounded rounded-pill px-2 py-1 mt-4 mb-3'>Services</span>  <br>
+     <span class='text-white bg-secondary rounded rounded-pill px-2 py-1 mt-4 mb-3'  data-aos='fade-up'>Services</span>  <br>
 
      <br><br>
 
-     <h4 class='text-white fw-bold text-center '>Explore our comprehensive range<br> of Professional Services</h4><br>
+     <h4 class='text-white fw-bold text-center ' data-aos='fade-up'>Explore our comprehensive range<br> of Professional Services</h4><br>
      
-     <div class='container services text-white'>
+     <div class='container services text-white'  data-aos='flip-up'>
          
          <div>
     
@@ -314,7 +366,7 @@ if(isset($_POST["submit"]))   {
  </div>
  <br>
 
- <div class=' why-section container '>
+ <div class=' why-section container '  data-aos='zoom-in'>
 
       <div>
          
@@ -362,7 +414,7 @@ if(isset($_POST["submit"]))   {
 
 
 
- <div class='bg-white py-5 container d-flex justify-content-between'>
+ <div class='bg-white py-5 container d-flex justify-content-between'  data-aos='fade-in'>
 
      <div>
          <p class='text-warning fw-bold text-sm'>Testimonials</p>
@@ -443,7 +495,7 @@ if(isset($_POST["submit"]))   {
 
  <br><br><br>
 
- <div class='appointments bg-warning text-white py-5 d-flex align-items-center flex-row flex-column'>
+ <div class='appointments bg-warning text-white py-5 d-flex align-items-center flex-row flex-column'  data-aos='zoom-in'>
      
    <span class='bg-light rounded rounded-pill text-capitalize text-danger text-sm px-2 py-1'>appointment</span>
 
@@ -456,7 +508,7 @@ if(isset($_POST["submit"]))   {
  </div>
 
 
- <div class='container mt-5'>
+ <div class='container mt-5'  data-aos='zoom-in-up'>
      
      <div class='fw-bold'>
           
@@ -587,6 +639,94 @@ if(isset($_POST["submit"]))   {
 <!-----------------------------------------Footer--------------------------------------------------->
 
 <?php include 'components/footer.php'; ?>
+
+<!-- beginning of java script section -->
+
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+        offset: 200, // Trigger animations after scrolling 200px
+       // Delay before starting animation
+   // Duration of the animation
+      easing: 'ease-in-out', // Easing function
+
+    });
+  </script>
+
+
+<script>
+    $(document).ready(function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                // Set the latitude and longitude values to the input fields
+                $("#mylatitude").val(latitude);
+                $("#mylongitude").val(longitude);
+
+                setTimeout(() => {
+                    
+                // Make the AJAX request to send data to the server
+                $.ajax({
+                    url: "engine/getLocation.php", // PHP file that will handle the location data
+                    type: "POST",           // Use POST method to send data
+                    data: {latitude: latitude, longitude: longitude}, // Send data
+                    success: function(data) {
+                        if (data == 1) {
+                            console.log("Success");
+                            // Success response
+                            // swal({
+                            //     title: "Success",
+                            //     icon: "success",
+                            //     text: "Location received successfully",
+                            // });
+                        } else {
+                            console.log(data);
+                            swal({
+                            //     title: "Error",
+                            //     icon: "error",
+                            //     text: "Unable to retrieve your location",
+                            });
+                        }
+                    },
+                    error: function(err) {
+                        console.log(err); // Log any error that occurs during the AJAX request
+                    }
+                });
+
+            }, 3000);
+
+
+            }, function(error) {
+                // If there's an error (e.g., user denies location access)
+                // $('#location').text('Unable to retrieve your location.');
+            });
+        } else {
+            // If geolocation is not supported by the browser
+            // $('#location').text('Geolocation is not supported by this browser.');
+        }
+    });
+</script>
+
+<script>
+         var myaddress = "<?php echo $myaddress; ?>";
+            alert(myaddress);
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
 
 
 <script>

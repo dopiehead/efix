@@ -77,7 +77,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'components/links.php'; ?>
     <link rel="stylesheet" href="assets/css/details.css">
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Service Provider | Details</title>
     
 </head>
@@ -105,13 +105,13 @@ else{
 
          <div class='row'>
            
-              <div class='col-md-7'>
+              <div class='col-md-7'  data-aos='fade-right'>
 
                      <img class='img-service' src="<?php echo"efix/".$sp_img;?>" alt='e_fix'>
 
               </div>
 
-              <div class='col-md-5'>
+              <div class='col-md-5'  data-aos='fade-left'>
 
                      <div class='d-flex justify-content-start flew-row flex-column g-5'>
 
@@ -178,7 +178,7 @@ else{
       <!-- End of class row -->
 
 
-      <div class="more">
+      <div class="more"  data-aos='zoom-in'>
 
          <img src="assets/img/img1.jpg" alt="">
 
@@ -198,7 +198,7 @@ else{
       </div>
 
 
-      <div class='px-2 mt-5'>
+      <div class='px-2 mt-5'  data-aos='fade-up'>
 
         <h5 class='fw-bold'>Our Services</h5>
         
@@ -219,7 +219,7 @@ else{
 
       </div>
 
-      <div class="mt-5 px-2">
+      <div class="mt-5 px-2"  data-aos='fade-up'>
         
          <div class='shadow-md pl-2 w-100 py-2 px-2'>
               <h6 class='fw-bold'>Work History</h6>
@@ -381,7 +381,7 @@ can serve you better</small><br>
       
      <!-- working hours -->
 
-      <div class="d-flex working-container px-3 mt-5">
+      <div class="d-flex working-container px-3 mt-5"  data-aos='fade-in'>
           
            <div class='working_hrs'>
             
@@ -439,7 +439,7 @@ can serve you better</small><br>
 
            <div>
 
-             <div class='fw-bold mt-5 mb-4 px-3 '>
+             <div class='fw-bold mt-5 mb-4 px-3 '  data-aos='zoom-in'>
 
                   <h5 class='fw-bold'>Reviews</h5>
                   <hr>
@@ -483,9 +483,9 @@ can serve you better</small><br>
 
   <div class='button-container d-flex justify-content-between px-2'>   
 
-      <a onclick="toggle_abuse()" class='text-white bg-warning mt-4 px-3 py-2 fw-bold border border-2 border-0 rounded'>Report Abuse</a>
+      <a onclick="toggle_abuse()" class='text-white bg-warning mt-4 px-3 py-2 fw-bold border border-2 border-0 rounded'  data-aos='fade-right'>Report Abuse</a>
 
-     <a  onclick="toggle_comment()" class='text-info bg-white mt-4 px-3 py-2 fw-bold border border-2 border-info rounded'>Post Comment</a>
+     <a  onclick="toggle_comment()" class='text-info bg-white mt-4 px-3 py-2 fw-bold border border-2 border-info rounded' data-aos='fade-left'>Post Comment</a>
 
   </div>    
    
@@ -498,7 +498,7 @@ can serve you better</small><br>
       <br><br>
 
 
-      <div class='px-3'>
+      <div class='px-3'  data-aos='fade-up'>
 
          <h5 class='fw-bold'>Other Service Providers Near You</h5>
          <hr>
@@ -659,7 +659,16 @@ can serve you better</small><br>
      </script>
 
 
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+        offset: 200, // Trigger animations after scrolling 200px
+       // Delay before starting animation
+   // Duration of the animation
+      easing: 'ease-in-out', // Easing function
 
+    });
+  </script>
 
 <script>
 
